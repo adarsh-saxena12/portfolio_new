@@ -23,7 +23,7 @@ export default function Header() {
             <div className="max-w-7xl mx-auto px-6 py-5">
                 <nav className="flex items-center justify-between">
                     <Link href="/" className="text-xl font-bold">
-                        AC
+                        AS
                     </Link>
 
                     <div className="flex items-center gap-8">
