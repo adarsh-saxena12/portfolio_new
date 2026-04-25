@@ -1,8 +1,15 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState, useEffect, useRef } from "react"
 import { Card } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog"
 import {
   Github,
   Linkedin,
@@ -26,42 +33,73 @@ import {
   Zap,
   GitBranch,
   GraduationCap,
+  ArrowUpRight,
 } from "lucide-react"
 import Image from "next/image"
+import Link from "next/link"
 import MusicCard from "@/components/music-card"
+import ProjectBentoGrid from "@/components/ProjectBentoGrid"
 
 const projects = [
   {
     id: 1,
-    title: "E-commerce Platform",
-    description:
-      "A modern e-commerce platform with real-time inventory, advanced filtering, and seamless checkout experience built with Next.js and Stripe.",
+    title: "Envval",
+    description: "Manage your environmental secrets with ease and security in a modern platform.",
     image: "/images/screenshot-202025-12-29-20221418.png",
+    bgImage: "/images/bg-1.png",
     tech: ["Next.js", "Stripe", "PostgreSQL"],
+    link: "#",
+    github: "https://github.com",
   },
   {
     id: 2,
-    title: "AI Content Generator",
-    description:
-      "An AI-powered content generation tool that helps creators write blog posts, social media content, and marketing copy using advanced language models.",
+    title: "Pixlr Chat",
+    description: "Multi-modal AI chat app with AI agents for intelligent conversations.",
     image: "/images/screenshot-202025-12-29-20221436.png",
+    bgImage: "/images/bg-2.png",
     tech: ["React", "OpenAI", "TypeScript"],
+    link: "#",
+    github: "https://github.com",
   },
   {
     id: 3,
-    title: "Project Management Dashboard",
-    description:
-      "A comprehensive project management dashboard with real-time collaboration, task tracking, and team analytics built for modern teams.",
+    title: "Echo Chat",
+    description: "Real-time chat rooms for seamless communication and collaboration.",
     image: "/images/screenshot-202025-12-29-20221354.png",
+    bgImage: "/images/bg-3.png",
     tech: ["Vue.js", "Firebase", "Tailwind"],
+    link: "#",
+    github: "https://github.com",
   },
   {
     id: 4,
-    title: "Social Media Analytics",
-    description:
-      "A powerful analytics platform that helps businesses track social media performance, engagement metrics, and audience insights across multiple platforms.",
+    title: "UI Craft",
+    description: "A comprehensive design system and component library for modern web apps.",
     image: "/images/screenshot-202025-12-29-20221453.png",
+    bgImage: "/images/bg-4.png",
     tech: ["Next.js", "Chart.js", "MongoDB"],
+    link: "#",
+    github: "https://github.com",
+  },
+  {
+    id: 5,
+    title: "Zen Flow",
+    description: "Mindfulness and productivity tracker with integrated meditation tools.",
+    image: "/images/blue-hero.png",
+    bgImage: "/images/bg-5.png",
+    tech: ["React Native", "Firebase", "HealthKit"],
+    link: "#",
+    github: "https://github.com",
+  },
+  {
+    id: 6,
+    title: "Swiss Analytics",
+    description: "Minimalist data visualization dashboard for precise business insights.",
+    image: "/images/swiss-minimal.png",
+    bgImage: "/images/bg-6.png",
+    tech: ["D3.js", "Next.js", "Prisma"],
+    link: "#",
+    github: "https://github.com",
   },
 ]
 
@@ -69,49 +107,56 @@ const projects = [
 import GenerativeCanvas from "@/components/generative-canvas"
 
 export default function Portfolio() {
-  const [currentProject, setCurrentProject] = useState(1)
   const [currentSkill, setCurrentSkill] = useState(0)
   const [currentExperience, setCurrentExperience] = useState(0)
   const [isPlaying, setIsPlaying] = useState(false)
 
   return (
     <div className="min-h-screen bg-background text-foreground transition-colors duration-300">
+      <section id="home" className="min-h-[calc(100vh-80px)] flex flex-col items-center justify-center relative overflow-hidden px-6 pt-8 pb-16 md:pt-16 md:pb-24 text-center">
+        {/* Background Decorative Element */}
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary/5 rounded-full blur-[120px] pointer-events-none" />
 
-      <section id="home" className="max-w-7xl mx-auto px-6 py-24 md:py-32">
-        <div className="relative group perspective-1000">
-          <Card className="bg-card/40 backdrop-blur-2xl border-border/50 rounded-xl overflow-hidden shadow-2xl transition-all duration-700 hover:shadow-primary/5">
-            <div className="p-8 md:p-16 lg:p-24 space-y-12 md:space-y-20 text-center">
-              {/* Minimal Hero Text */}
-              <div className="space-y-6 max-w-4xl mx-auto">
-                <div className="flex items-center justify-center gap-3 mb-8">
-                  <div className="w-2 h-2 rounded-full bg-primary animate-pulse" />
-                  <span className="text-[10px] md:text-xs uppercase tracking-[0.4em] text-muted-foreground font-medium">
-                    Available for new projects
-                  </span>
-                </div>
+        <div className="relative z-10 space-y-10 w-full max-w-7xl flex flex-col items-center">
+          {/* Status Badge */}
+          <div className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-secondary/30 border border-border/50 backdrop-blur-sm shadow-sm group hover:border-primary/30 transition-all cursor-default w-fit">
+            <span className="relative flex h-2 w-2">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+            </span>
+            <span className="text-[10px] uppercase tracking-[0.2em] font-bold text-foreground/70">
+              Open for world-domination
+            </span>
+          </div>
 
-                <h1 className="text-5xl md:text-7xl lg:text-[6rem] font-medium tracking-tight leading-[1.1] text-foreground">
-                  Elevating Digital <br />
-                  <span className="text-muted-foreground">Experiences</span>
-                </h1>
+          {/* Main Title */}
+          <div className="space-y-4 w-full">
+            <h1 className="text-4xl md:text-6xl lg:text-7xl font-medium tracking-tight leading-tight text-foreground w-full uppercase">
+              I build. <br />
+              <span className="text-muted-foreground">Mostly</span> on purpose.
+            </h1>
+          </div>
 
-                <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto font-light leading-relaxed">
-                  Crafting minimal, high-performance solutions for the modern web.
-                </p>
+          {/* Subtext */}
+          <p className="text-lg md:text-xl text-muted-foreground max-w-2xl font-light leading-relaxed">
+            I am currently working as a <span className="text-foreground font-medium">Fullstack Developer at XZ Company.</span><br />
+            99% caffeine, 1% code, 100% passion.
+          </p>
+
+          {/* Action Buttons */}
+          <div className="flex flex-wrap items-center justify-center gap-6 pt-4">
+            <Button size="lg" className="rounded-full h-14 px-10 text-lg bg-foreground text-background hover:bg-foreground/90 transition-all hover:scale-[1.03] active:scale-[0.98] shadow-xl shadow-foreground/5 font-semibold">
+              Explore Work
+            </Button>
+            <Button size="lg" variant="ghost" className="rounded-full h-14 px-10 text-lg hover:bg-secondary/80 transition-all flex items-center gap-3 group font-medium">
+              Say Hello
+              <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
+                <ChevronRight className="w-4 h-4 text-primary" />
               </div>
-              {/* Action Buttons */}
-              <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-12">
-                <Button size="lg" className="rounded-full h-14 px-10 text-lg bg-primary hover:bg-primary/90 transition-all hover:scale-105 active:scale-95">
-                  View Projects
-                </Button>
-                <Button size="lg" variant="outline" className="rounded-full h-14 px-10 text-lg border-border hover:bg-secondary transition-all hover:scale-105 active:scale-95">
-                  Get in Touch
-                </Button>
-              </div>
-            </div>
-          </Card>
+            </Button>
+          </div>
         </div>
-      </section >
+      </section>
 
       <section id="about" className="max-w-7xl mx-auto px-6 py-16">
         <div className="grid grid-cols-1 md:grid-cols-6 lg:grid-cols-12 gap-4">
@@ -387,154 +432,67 @@ export default function Portfolio() {
           </p>
         </div>
 
-        <div className="relative group">
-          <div className="overflow-visible">
-            {/* Cinematic Project Card */}
-            <Card className="bg-secondary/5 border-border/50 rounded-[3rem] overflow-hidden backdrop-blur-sm relative transition-all duration-700">
-              <div className="relative aspect-[16/9] lg:aspect-[21/9] flex items-center">
-                <Image
-                  key={currentProject}
-                  src={projects.find((p) => p.id === currentProject)?.image || projects[0].image}
-                  alt="Featured Project"
-                  fill
-                  className="object-cover opacity-60 transition-all duration-1000 group-hover:scale-105"
-                />
-                <div className="absolute inset-0 bg-gradient-to-r from-background via-background/60 to-transparent" />
-
-                <div className="relative z-10 p-8 md:p-20 space-y-8 max-w-3xl">
-                  <div className="relative">
-                    <span className="text-[6rem] md:text-[12rem] font-bold text-foreground/[0.03] absolute -top-16 md:-top-32 -left-4 md:-left-12 select-none leading-none">
-                      0{projects.findIndex((p) => p.id === currentProject) + 1}
-                    </span>
-                    <div className="space-y-4">
-                      <h3 className="text-4xl md:text-7xl font-bold tracking-tight text-foreground transition-all duration-500">
-                        {projects.find((p) => p.id === currentProject)?.title}
-                      </h3>
-                      <p className="text-muted-foreground text-lg md:text-2xl font-light leading-relaxed max-w-2xl">
-                        {projects.find((p) => p.id === currentProject)?.description}
-                      </p>
-                    </div>
-                  </div>
-
-                  <div className="flex flex-wrap gap-3">
-                    {projects
-                      .find((p) => p.id === currentProject)
-                      ?.tech.map((tech) => (
-                        <span
-                          key={tech}
-                          className="px-4 py-2 bg-white/5 border border-white/10 backdrop-blur-md text-foreground/80 rounded-full text-xs font-medium"
-                        >
-                          {tech}
-                        </span>
-                      ))}
-                  </div>
-
-                  <div className="pt-4">
-                    <Button
-                      variant="outline"
-                      className="group/btn h-14 px-10 rounded-full border-foreground/10 hover:bg-foreground hover:text-background transition-all duration-500 gap-3 text-lg"
-                    >
-                      View Case Study
-                      <ExternalLink className="w-5 h-5 transition-transform group-hover/btn:translate-x-1 group-hover/btn:-translate-y-1" />
-                    </Button>
-                  </div>
-                </div>
-              </div>
-            </Card>
-
-            {/* Navigation Controls */}
-            <div className="flex items-center gap-8 mt-12 justify-center md:justify-start">
-              <div className="flex gap-4">
-                <button
-                  onClick={() => {
-                    const currentIndex = projects.findIndex((p) => p.id === currentProject)
-                    const newIndex = currentIndex === 0 ? projects.length - 1 : currentIndex - 1
-                    setCurrentProject(projects[newIndex].id)
-                  }}
-                  className="w-16 h-16 rounded-full border border-foreground/10 flex items-center justify-center hover:bg-foreground hover:text-background transition-all group/nav"
-                >
-                  <ChevronLeft className="w-6 h-6 transition-transform group-nav:-translate-x-1" />
-                </button>
-                <button
-                  onClick={() => {
-                    const currentIndex = projects.findIndex((p) => p.id === currentProject)
-                    const newIndex = (currentIndex + 1) % projects.length
-                    setCurrentProject(projects[newIndex].id)
-                  }}
-                  className="w-16 h-16 rounded-full border border-foreground/10 flex items-center justify-center hover:bg-foreground hover:text-background transition-all group/nav"
-                >
-                  <ChevronRight className="w-6 h-6 transition-transform group-nav:translate-x-1" />
-                </button>
-              </div>
-
-              <div className="hidden md:flex items-center gap-4">
-                <div className="h-[2px] w-48 bg-foreground/5 relative overflow-hidden rounded-full">
-                  <div
-                    className="absolute inset-0 bg-orange-500 transition-all duration-500"
-                    style={{
-                      width: `${(1 / projects.length) * 100}%`,
-                      left: `${(projects.findIndex((p) => p.id === currentProject) / projects.length) * 100}%`,
-                    }}
-                  />
-                </div>
-                <div className="flex items-center gap-2 text-sm font-medium tabular-nums">
-                  <span className="text-foreground">0{projects.findIndex((p) => p.id === currentProject) + 1}</span>
-                  <span className="text-foreground/20">/</span>
-                  <span className="text-foreground/40">0{projects.length}</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+        <ProjectBentoGrid projects={projects} />
       </section>
 
       <section className="mt-32 px-6 max-w-7xl mx-auto mb-24">
         <h2 className="text-5xl font-bold mb-16 text-center">More About Me</h2>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-          <Card className="bg-card backdrop-blur border-border hover:border-blue-500/50 transition-all cursor-pointer aspect-square flex flex-col items-center justify-center text-center p-12 group">
-            <div className="w-24 h-24 mb-8 rounded-3xl bg-blue-500/10 flex items-center justify-center group-hover:bg-blue-500/20 transition-colors">
-              <GraduationCap className="w-12 h-12 text-blue-500" />
+        <div className="grid grid-cols-1 md:grid-cols-6 lg:grid-cols-12 gap-6">
+          {/* Education Card */}
+          <Card className="md:col-span-3 lg:col-span-4 bg-secondary/10 backdrop-blur-xl border-border/40 hover:border-primary/30 transition-all duration-700 group p-8 rounded-[2rem] flex flex-col justify-between min-h-[300px] relative overflow-hidden">
+            <div className="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 group-hover:bg-primary/10 transition-colors" />
+            <div className="w-14 h-14 rounded-2xl bg-background/50 border border-border/50 flex items-center justify-center shadow-sm group-hover:scale-110 transition-transform duration-500">
+              <GraduationCap className="w-7 h-7 text-primary" />
             </div>
-            <h3 className="font-bold text-3xl mb-4 text-foreground">Education</h3>
-            <p className="text-muted-foreground text-lg leading-relaxed">BTech in Chemical Engineering</p>
-            <p className="text-muted-foreground/70 text-sm mt-2">My academic background and foundation</p>
+            <div className="space-y-2 relative z-10">
+              <p className="text-primary font-medium tracking-[0.2em] uppercase text-[10px]">Foundation</p>
+              <h3 className="font-bold text-3xl text-foreground">Education</h3>
+              <p className="text-muted-foreground text-sm leading-relaxed max-w-[200px]">BTech in Chemical Engineering from a premier institute.</p>
+            </div>
           </Card>
 
-          <Card className="bg-card backdrop-blur border-border hover:border-blue-500/50 transition-all cursor-pointer aspect-square flex flex-col items-center justify-center text-center p-12 group">
-            <div className="w-24 h-24 mb-8 rounded-3xl bg-blue-500/10 flex items-center justify-center group-hover:bg-blue-500/20 transition-colors">
-              <FileText className="w-12 h-12 text-blue-500" />
+          {/* Resume Card */}
+          <Card className="md:col-span-3 lg:col-span-4 bg-secondary/10 backdrop-blur-xl border-border/40 hover:border-primary/30 transition-all duration-700 group p-8 rounded-[2rem] flex flex-col justify-between min-h-[300px] relative overflow-hidden">
+            <div className="absolute bottom-0 left-0 w-32 h-32 bg-primary/5 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2 group-hover:bg-primary/10 transition-colors" />
+            <div className="w-14 h-14 rounded-2xl bg-background/50 border border-border/50 flex items-center justify-center shadow-sm group-hover:scale-110 transition-transform duration-500">
+              <FileText className="w-7 h-7 text-primary" />
             </div>
-            <h3 className="font-bold text-3xl mb-4 text-foreground">Resume</h3>
-            <p className="text-muted-foreground text-lg leading-relaxed">Download my CV & credentials</p>
+            <div className="space-y-4 relative z-10">
+              <div>
+                <p className="text-primary font-medium tracking-[0.2em] uppercase text-[10px]">Credentials</p>
+                <h3 className="font-bold text-3xl text-foreground">Resume</h3>
+              </div>
+              <Button variant="outline" className="rounded-full border-border/50 hover:bg-primary hover:text-primary-foreground transition-all group/btn w-fit">
+                Download PDF
+                <ArrowUpRight className="ml-2 w-4 h-4 group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5 transition-transform" />
+              </Button>
+            </div>
           </Card>
-        </div>
 
-        <div className="grid grid-cols-1 gap-6">
-          <Card className="bg-zinc-900 border-zinc-800 overflow-hidden group hover:border-zinc-700 transition-all">
-            <div className="relative h-[600px]">
-              <Image
-                src="/images/pexels-aronvisuals-1694631.jpg"
-                alt="Nature Photography"
-                fill
-                className="object-cover group-hover:scale-105 transition-transform duration-500"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-zinc-900/90 via-zinc-900/30 to-transparent" />
-              <div className="absolute inset-0 flex items-center justify-center p-8">
-                <div className="text-center max-w-3xl">
-                  <h3 className="text-6xl font-bold text-white mb-6 leading-tight">
-                    Build with Purpose,
-                    <br />
-                    Create with Passion
-                  </h3>
-                  <p className="text-zinc-200 text-xl leading-relaxed">
-                    Every line of code is an opportunity to make a difference. I believe in crafting solutions that not
-                    only solve problems but inspire and elevate human experiences.
-                  </p>
+          {/* Philosophy Card (Links to new page) */}
+          <Link href="/journal" className="md:col-span-6 lg:col-span-4 block group">
+            <Card className="bg-zinc-950 border-zinc-900 overflow-hidden hover:border-primary/40 transition-all duration-1000 shadow-2xl relative p-0 border-0 rounded-[2rem] min-h-[300px] cursor-pointer h-full">
+              <div className="relative h-full min-h-[300px] overflow-hidden">
+                <Image
+                  src="/images/about-philosophy-bg.jpeg"
+                  alt="Serene Mountain Landscape"
+                  fill
+                  className="object-cover opacity-60 group-hover:opacity-80 group-hover:scale-110 transition-all duration-[2000ms] ease-out"
+                />
+                <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-all duration-1000" />
+                <div className="absolute inset-0 flex flex-col justify-end p-8">
+                  <div className="space-y-2 transform transition-all duration-1000 group-hover:-translate-y-2">
+                    <h3 className="text-3xl font-medium text-white tracking-tight uppercase">
+                      Journey is Home
+                    </h3>
+                    <p className="text-white/60 text-xs leading-relaxed font-light max-w-[240px]">
+                      Finding clarity in the stillness of the mountains. Click to read more.
+                    </p>
+                  </div>
                 </div>
               </div>
-            </div>
-          </Card>
+            </Card>
+          </Link>
         </div>
       </section>
 
