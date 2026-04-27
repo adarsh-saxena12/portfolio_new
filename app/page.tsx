@@ -37,7 +37,6 @@ import {
 } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
-import MusicCard from "@/components/music-card"
 import ProjectBentoGrid from "@/components/ProjectBentoGrid"
 
 const projects = [
@@ -113,382 +112,315 @@ export default function Portfolio() {
 
   return (
     <div className="min-h-screen bg-background text-foreground transition-colors duration-300">
-      <section id="home" className="min-h-[calc(100vh-80px)] flex flex-col items-center justify-center relative overflow-hidden px-6 pt-8 pb-16 md:pt-16 md:pb-24 text-center">
-        {/* Background Decorative Element */}
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary/5 rounded-full blur-[120px] pointer-events-none" />
-
-        <div className="relative z-10 space-y-10 w-full max-w-7xl flex flex-col items-center">
-          {/* Status Badge */}
-          <div className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-secondary/30 border border-border/50 backdrop-blur-sm shadow-sm group hover:border-primary/30 transition-all cursor-default w-fit">
-            <span className="relative flex h-2 w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
-            </span>
-            <span className="text-[10px] uppercase tracking-[0.2em] font-bold text-foreground/70">
-              Open for world-domination
-            </span>
+      <section id="home" className="min-h-screen flex flex-col justify-center bg-background px-6 relative overflow-hidden">
+        {/* Subtle Background Element */}
+        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/5 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/4" />
+        
+        <div className="max-w-7xl mx-auto w-full space-y-24 relative z-10">
+          {/* Top Metadata */}
+          <div className="flex justify-between items-end border-b border-border/40 pb-8">
+            <div className="space-y-1">
+              <p className="text-[10px] font-bold tracking-[0.4em] text-primary uppercase">Adarsh Saxena</p>
+              <p className="text-[10px] font-medium tracking-[0.2em] text-muted-foreground uppercase italic">Software Development Engineer</p>
+            </div>
+            <div className="hidden md:flex flex-col items-end space-y-1">
+              <span className="text-[9px] font-black tracking-[0.4em] text-foreground uppercase">Independent / Studio</span>
+              <span className="text-[9px] font-medium tracking-[0.2em] text-muted-foreground uppercase">Based in India © 2025</span>
+            </div>
           </div>
 
-          {/* Main Title */}
-          <div className="space-y-4 w-full">
-            <h1 className="text-4xl md:text-6xl lg:text-7xl font-medium tracking-tight leading-tight text-foreground w-full uppercase">
-              I build. <br />
-              <span className="text-muted-foreground">Mostly</span> on purpose.
-            </h1>
-          </div>
-
-          {/* Subtext */}
-          <p className="text-lg md:text-xl text-muted-foreground max-w-2xl font-light leading-relaxed">
-            I am currently working as a <span className="text-foreground font-medium">Fullstack Developer at XZ Company.</span><br />
-            99% caffeine, 1% code, 100% passion.
-          </p>
-
-          {/* Action Buttons */}
-          <div className="flex flex-wrap items-center justify-center gap-6 pt-4">
-            <Button size="lg" className="rounded-full h-14 px-10 text-lg bg-foreground text-background hover:bg-foreground/90 transition-all hover:scale-[1.03] active:scale-[0.98] shadow-xl shadow-foreground/5 font-semibold">
-              Explore Work
-            </Button>
-            <Button size="lg" variant="ghost" className="rounded-full h-14 px-10 text-lg hover:bg-secondary/80 transition-all flex items-center gap-3 group font-medium">
-              Say Hello
-              <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
-                <ChevronRight className="w-4 h-4 text-primary" />
+          {/* Main Headline */}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+            <div className="lg:col-span-8">
+              <div className="space-y-0">
+                <h1 className="text-6xl md:text-8xl lg:text-[9rem] font-medium tracking-tighter leading-[0.8] uppercase">
+                  Digital
+                </h1>
+                <h1 className="text-6xl md:text-8xl lg:text-[9rem] font-extralight tracking-tighter leading-[0.8] uppercase text-foreground">
+                  Architect
+                </h1>
               </div>
-            </Button>
+            </div>
+            <div className="lg:col-span-4 lg:pt-12 space-y-12">
+              <p className="text-muted-foreground text-xl md:text-2xl font-light leading-relaxed max-w-sm">
+                Obsessed with the intersection of functional engineering and high-end aesthetic clarity. Currently scaling products at Algorizz.
+              </p>
+              
+              <div className="flex flex-col sm:flex-row items-start sm:items-center gap-10 pt-4">
+                <button 
+                  onClick={() => document.getElementById('work')?.scrollIntoView({ behavior: 'smooth' })}
+                  className="group relative flex items-center gap-4 text-[10px] font-black uppercase tracking-[0.4em] text-foreground"
+                >
+                  <div className="w-14 h-14 rounded-full border border-border flex items-center justify-center group-hover:bg-primary group-hover:border-primary transition-all duration-500">
+                    <ArrowUpRight className="w-5 h-5 group-hover:text-primary-foreground transition-colors" />
+                  </div>
+                  <span>Explore Work</span>
+                </button>
+                
+                <Link href="/contact" className="group flex items-center gap-3">
+                  <div className="w-2 h-2 rounded-full bg-primary animate-pulse" />
+                  <span className="text-[10px] font-black uppercase tracking-[0.4em] text-foreground group-hover:text-primary transition-colors border-b border-transparent group-hover:border-primary/40 pb-1">
+                    Get in touch
+                  </span>
+                </Link>
+              </div>
+            </div>
+          </div>
+
+          {/* Bottom Badge/Scroll */}
+          <div className="flex items-center gap-6 pt-12">
+            <div className="w-12 h-12 rounded-full border border-border/40 flex items-center justify-center animate-bounce">
+               <ChevronRight className="w-5 h-5 text-muted-foreground rotate-90" />
+            </div>
+            <span className="text-[10px] font-bold tracking-[0.4em] text-muted-foreground uppercase">Scroll to Discover</span>
           </div>
         </div>
       </section>
 
       <section id="about" className="max-w-7xl mx-auto px-6 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-6 lg:grid-cols-12 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-6 lg:grid-cols-12 gap-6">
           {/* Creative Developer Card - Spans 6 columns */}
-          <Card className="md:col-span-6 lg:col-span-6 bg-card border-border overflow-hidden group hover:border-primary/50 transition-all duration-500 relative">
-            <div className="absolute inset-0 z-0">
+          <Card className="md:col-span-6 lg:col-span-6 bg-card border-border/40 overflow-hidden group hover:border-primary/30 transition-all duration-700 relative rounded-xl shadow-sm hover:shadow-md">
+            <div className="absolute inset-0 z-0 opacity-40 group-hover:opacity-60 transition-opacity">
               <GenerativeCanvas />
             </div>
-            <div className="relative h-80 flex flex-col justify-end p-10 z-10">
-              <div className="space-y-2 transform transition-transform duration-500 group-hover:-translate-y-2">
-                <p className="text-primary font-medium tracking-[0.2em] uppercase text-[10px]">Philosophy</p>
-                <h3 className="text-4xl font-bold tracking-tight text-foreground">Creative <br />Developer</h3>
-                <p className="text-muted-foreground font-light text-lg">Where logic meets aesthetic vision.</p>
+            <div className="relative h-[320px] flex flex-col justify-end p-10 z-10">
+              <div className="space-y-4 transform transition-transform duration-700 group-hover:-translate-y-2">
+                <p className="text-primary font-bold tracking-[0.3em] uppercase text-[9px]">Current Role</p>
+                <h3 className="text-4xl md:text-5xl font-medium tracking-tighter text-card-foreground leading-tight">SDE @ <br />Algorizz</h3>
+                <p className="text-muted-foreground font-light text-lg max-w-xs">Building the future as an SDE for the past year at a high-growth startup.</p>
               </div>
             </div>
           </Card>
 
           {/* Introduction Card - Spans 6 columns */}
-          <Card className="md:col-span-6 lg:col-span-6 bg-card border-border p-8 flex flex-col justify-center">
-            <h3 className="text-3xl font-bold mb-6 text-foreground">Introduction</h3>
-            <p className="text-muted-foreground text-lg leading-relaxed">
-              I'm a full-stack developer passionate about creating beautiful, functional web experiences. With expertise
-              in modern web technologies, I craft digital solutions that combine aesthetic design with clean, performant
-              code.
+          <Card className="md:col-span-6 lg:col-span-6 bg-card border-border/40 p-10 flex flex-col justify-center rounded-xl shadow-sm space-y-8">
+            <div className="space-y-2">
+              <p className="text-primary font-bold tracking-[0.3em] uppercase text-[9px]">The Intro</p>
+              <h3 className="text-4xl font-medium tracking-tighter text-card-foreground">Hi, I'm Adarsh 👋</h3>
+            </div>
+            <p className="text-muted-foreground text-lg md:text-xl font-light leading-relaxed">
+              I'm a full-stack developer obsessed with creating beautiful, performant web experiences. Currently scaling digital products at Algorizz, I combine intentional design with clean, scalable code.
             </p>
+            <div className="pt-4 flex items-center gap-4">
+               <div className="w-12 h-[1px] bg-border" />
+               <span className="text-[10px] font-bold tracking-widest text-muted-foreground uppercase italic">Based in Earth</span>
+            </div>
           </Card>
 
           {/* Professional Projects Card - Spans 8 columns */}
           <Card
-            className="md:col-span-6 lg:col-span-8 bg-black border-zinc-800 p-10 flex flex-col justify-between relative group cursor-pointer h-96 transition-all duration-700"
+            className="md:col-span-6 lg:col-span-8 bg-zinc-950 border-zinc-900 p-10 flex flex-col justify-between relative group cursor-pointer h-[380px] transition-all duration-700 rounded-xl overflow-hidden shadow-2xl"
             onClick={() => setCurrentExperience((prev) => (prev + 1) % 4)}
           >
-            <div className="flex items-center gap-3">
-              <h3 className="text-4xl font-bold text-white">Professional Projects</h3>
-              <span className="text-4xl">🤞</span>
+            <div className="absolute top-0 right-0 p-8">
+              <span className="text-[10px] font-bold tracking-[0.4em] text-white/20 uppercase group-hover:text-white/40 transition-colors">
+                Experience / 0{currentExperience + 1}
+              </span>
             </div>
 
-            <div className="flex-1 flex items-center justify-center">
-              {currentExperience === 0 && (
-                <div className="text-center space-y-2 transition-all duration-700">
-                  {/* Empty first slide - only shows heading */}
-                </div>
-              )}
-              {currentExperience === 1 && (
-                <div className="text-center space-y-2 transition-all duration-700">
-                  <h4 className="text-3xl font-bold text-white">E-Commerce Platform</h4>
-                  <p className="text-zinc-400 text-lg">Built for Global Retail Corp</p>
-                  <p className="text-sm text-zinc-500">2023 - 2024</p>
-                </div>
-              )}
-              {currentExperience === 2 && (
-                <div className="text-center space-y-2 transition-all duration-700">
-                  <h4 className="text-3xl font-bold text-white">Healthcare Dashboard</h4>
-                  <p className="text-zinc-400 text-lg">Medical Data Analytics System</p>
-                  <p className="text-sm text-zinc-500">2022 - 2023</p>
-                </div>
-              )}
-              {currentExperience === 3 && (
-                <div className="text-center space-y-2 transition-all duration-700">
-                  <h4 className="text-3xl font-bold text-white">FinTech Mobile App</h4>
-                  <p className="text-zinc-400 text-lg">Payment Processing Platform</p>
-                  <p className="text-sm text-zinc-500">2021 - 2022</p>
-                </div>
-              )}
+            <div className="flex items-center gap-4">
+              <h3 className="text-4xl font-medium tracking-tighter text-white">Professional Journey</h3>
+              <div className="w-8 h-8 rounded-full bg-white/5 border border-white/10 flex items-center justify-center">
+                <Zap className="w-4 h-4 text-primary" />
+              </div>
             </div>
 
-            <div className="absolute bottom-10 right-10">
-              <ChevronRight className="w-12 h-12 text-white group-hover:translate-x-2 transition-transform" />
+            <div className="flex-1 flex items-center">
+              <div className="space-y-6 w-full">
+                {currentExperience === 0 && (
+                  <div className="space-y-2 transition-all duration-700 animate-in fade-in slide-in-from-left-4">
+                    <p className="text-primary text-sm font-bold tracking-widest uppercase">Overview</p>
+                    <h4 className="text-5xl md:text-6xl font-medium tracking-tighter text-white/40">Building the <br />Future.</h4>
+                  </div>
+                )}
+                {currentExperience === 1 && (
+                  <div className="space-y-2 transition-all duration-700 animate-in fade-in slide-in-from-left-4">
+                    <p className="text-primary text-sm font-bold tracking-widest uppercase">2023 - Present</p>
+                    <h4 className="text-4xl md:text-5xl font-medium tracking-tighter text-white">E-Commerce Platform</h4>
+                    <p className="text-zinc-400 text-xl font-light">Lead Architect for Global Retail Solutions</p>
+                  </div>
+                )}
+                {currentExperience === 2 && (
+                  <div className="space-y-2 transition-all duration-700 animate-in fade-in slide-in-from-left-4">
+                    <p className="text-primary text-sm font-bold tracking-widest uppercase">2022 - 2023</p>
+                    <h4 className="text-4xl md:text-5xl font-medium tracking-tighter text-white">Healthcare Suite</h4>
+                    <p className="text-zinc-400 text-xl font-light">Fullstack Dev for Medical Analytics</p>
+                  </div>
+                )}
+                {currentExperience === 3 && (
+                  <div className="space-y-2 transition-all duration-700 animate-in fade-in slide-in-from-left-4">
+                    <p className="text-primary text-sm font-bold tracking-widest uppercase">2021 - 2022</p>
+                    <h4 className="text-4xl md:text-5xl font-medium tracking-tighter text-white">FinTech Core</h4>
+                    <p className="text-zinc-400 text-xl font-light">Backend Engineer for Secure Payments</p>
+                  </div>
+                )}
+              </div>
+            </div>
+
+            <div className="flex items-center justify-between">
+              <p className="text-white/20 text-[10px] font-bold tracking-widest uppercase">Click to navigate</p>
+              <ChevronRight className="w-8 h-8 text-white group-hover:translate-x-2 transition-transform duration-500" />
             </div>
           </Card>
 
           {/* Stats Card - Spans 4 columns */}
-          <Card className="md:col-span-6 lg:col-span-4 bg-gradient-to-br from-pink-500 via-red-500 to-orange-500 border-0 p-6 h-96">
-            <div className="grid grid-cols-2 gap-3 h-full">
-              <div className="bg-white rounded-xl p-2 flex items-center justify-center">
-                <Github className="w-10 h-10 text-zinc-900" />
-              </div>
-              <div className="bg-white rounded-xl p-2 flex items-center justify-center">
-                <div className="text-center">
-                  <div className="text-2xl font-bold text-zinc-900">1945</div>
+          <Card className="md:col-span-6 lg:col-span-4 bg-card border-border/40 p-8 h-[380px] rounded-xl shadow-sm relative overflow-hidden group">
+            <div className="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
+            
+            <div className="relative h-full flex flex-col justify-between">
+               <div className="space-y-2">
+                 <p className="text-primary font-bold tracking-[0.3em] uppercase text-[9px]">Activity</p>
+                 <h3 className="text-3xl font-medium tracking-tighter text-card-foreground">Metrics</h3>
+               </div>
+
+               <div className="grid grid-cols-2 gap-4">
+                <div className="bg-secondary/30 rounded-2xl p-6 flex flex-col items-center justify-center space-y-2 group-hover:bg-secondary/50 transition-colors">
+                  <Github className="w-6 h-6 text-foreground/70" />
+                  <div className="text-2xl font-bold tracking-tighter">1.9k</div>
+                  <p className="text-[8px] uppercase tracking-widest text-muted-foreground">Commits</p>
                 </div>
-              </div>
-              <div className="bg-white rounded-xl p-2 flex items-center justify-center">
-                <div className="text-center text-zinc-900 text-xl font-bold">...</div>
-              </div>
-              <div className="bg-white rounded-xl p-2 flex items-center justify-center">
-                <Code2 className="w-10 h-10 text-zinc-900" />
-              </div>
-              <div className="bg-white rounded-xl p-2 flex items-center justify-center">
-                <BarChart3 className="w-10 h-10 text-zinc-900" />
-              </div>
-              <div className="bg-white rounded-xl p-2 flex items-center justify-center">
-                <div className="text-center">
-                  <div className="text-2xl font-bold text-zinc-900">1314</div>
+                <div className="bg-secondary/30 rounded-2xl p-6 flex flex-col items-center justify-center space-y-2 group-hover:bg-secondary/50 transition-colors">
+                  <Code2 className="w-6 h-6 text-foreground/70" />
+                  <div className="text-2xl font-bold tracking-tighter">130+</div>
+                  <p className="text-[8px] uppercase tracking-widest text-muted-foreground">Projects</p>
                 </div>
-              </div>
-            </div>
-          </Card>
-
-          {/* Music Card - Spans 4 columns */}
-          {/* <Card className="md:col-span-6 lg:col-span-4 bg-zinc-900 border-zinc-800 overflow-hidden p-8 flex flex-col justify-between relative group h-80">
-            <Image
-              src="https://images.unsplash.com/photo-1511379938547-c1f69419868d?w=800&q=80"
-              alt="Music Background"
-              fill
-              className="object-cover opacity-30"
-            />
-            <div className="absolute inset-0 bg-gradient-to-br from-purple-600/80 to-pink-600/80" />
-
-            <div className="relative z-10">
-              <div className="flex items-center gap-3 mb-6">
-                <Music className="w-8 h-8 text-white" />
-                <h3 className="text-3xl font-bold text-white">Now Playing</h3>
-              </div>
-
-              <div className="space-y-4">
-                <div className="text-center">
-                  <p className="text-2xl font-bold text-white mb-1">Lofi Hip Hop</p>
-                  <p className="text-white/80">Chill Beats to Code To</p>
+                <div className="bg-secondary/30 rounded-2xl p-6 flex flex-col items-center justify-center space-y-2 group-hover:bg-secondary/50 transition-colors">
+                  <BarChart3 className="w-6 h-6 text-foreground/70" />
+                  <div className="text-2xl font-bold tracking-tighter">99.9%</div>
+                  <p className="text-[8px] uppercase tracking-widest text-muted-foreground">Uptime</p>
                 </div>
-
-                <div className="flex items-center gap-3">
-                  <button
-                    onClick={() => {
-                      const audio = document.getElementById("portfolio-audio") as HTMLAudioElement
-                      if (audio) {
-                        if (isPlaying) {
-                          audio.pause()
-                        } else {
-                          audio.play()
-                        }
-                        setIsPlaying(!isPlaying)
-                      }
-                    }}
-                    className="w-16 h-16 rounded-full bg-white hover:bg-white/90 flex items-center justify-center transition-all"
-                  >
-                    {isPlaying ? (
-                      <Pause className="w-8 h-8 text-purple-600" />
-                    ) : (
-                      <Play className="w-8 h-8 text-purple-600 ml-1" />
-                    )}
-                  </button>
-
-                  <div className="flex-1">
-                    <div className="h-2 bg-white/30 rounded-full overflow-hidden">
-                      <div className="h-full bg-white rounded-full w-1/3"></div>
-                    </div>
-                    <div className="flex justify-between text-xs text-white/80 mt-1">
-                      <span>1:24</span>
-                      <span>3:45</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <audio id="portfolio-audio" src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" />
-            </div>
-          </Card> */}
-          <MusicCard />
-
-          {/* Skills Card - Spans 8 columns */}
-          <Card className="md:col-span-6 lg:col-span-8 bg-zinc-950 border-zinc-800 p-8 h-auto">
-            <div className="flex items-center gap-3 mb-8">
-              <h3 className="text-4xl font-bold text-white/90 mb-4">My Skills</h3>
-              <span className="text-4xl">🏅</span>
-            </div>
-
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-              {/* Backend */}
-              <div className="space-y-4">
-                <h4 className="text-lg font-semibold text-white/90 mb-4">Backend</h4>
-                <div className="space-y-3">
-                  <div className="flex items-center gap-3">
-                    <Terminal className="w-5 h-5 text-white/60" />
-                    <span className="text-white/70 text-sm">Node.js</span>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <Code2 className="w-5 h-5 text-white/60" />
-                    <span className="text-white/70 text-sm">Python</span>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <Database className="w-5 h-5 text-white/60" />
-                    <span className="text-white/70 text-sm">PostgreSQL</span>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <Server className="w-5 h-5 text-white/60" />
-                    <span className="text-white/70 text-sm">Express</span>
-                  </div>
-                </div>
-              </div>
-
-              {/* Frontend */}
-              <div className="space-y-4">
-                <h4 className="text-lg font-semibold text-white/90 mb-4">Frontend</h4>
-                <div className="space-y-3">
-                  <div className="flex items-center gap-3">
-                    <Code2 className="w-5 h-5 text-white/60" />
-                    <span className="text-white/70 text-sm">React</span>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <Layers className="w-5 h-5 text-white/60" />
-                    <span className="text-white/70 text-sm">Next.js</span>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <Code2 className="w-5 h-5 text-white/60" />
-                    <span className="text-white/70 text-sm">TypeScript</span>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <Palette className="w-5 h-5 text-white/60" />
-                    <span className="text-white/70 text-sm">Tailwind</span>
-                  </div>
-                </div>
-              </div>
-
-              {/* DevOps */}
-              <div className="space-y-4">
-                <h4 className="text-lg font-semibold text-white/90 mb-4">DevOps</h4>
-                <div className="space-y-3">
-                  <div className="flex items-center gap-3">
-                    <Layers className="w-5 h-5 text-white/60" />
-                    <span className="text-white/70 text-sm">Docker</span>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <Cloud className="w-5 h-5 text-white/60" />
-                    <span className="text-white/70 text-sm">AWS</span>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <GitBranch className="w-5 h-5 text-white/60" />
-                    <span className="text-white/70 text-sm">CI/CD</span>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <Server className="w-5 h-5 text-white/60" />
-                    <span className="text-white/70 text-sm">Kubernetes</span>
-                  </div>
-                </div>
-              </div>
-
-              {/* Miscellaneous */}
-              <div className="space-y-4">
-                <h4 className="text-lg font-semibold text-white/90 mb-4">Miscellaneous</h4>
-                <div className="space-y-3">
-                  <div className="flex items-center gap-3">
-                    <GitBranch className="w-5 h-5 text-white/60" />
-                    <span className="text-white/70 text-sm">Git</span>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <Code2 className="w-5 h-5 text-white/60" />
-                    <span className="text-white/70 text-sm">REST APIs</span>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <Database className="w-5 h-5 text-white/60" />
-                    <span className="text-white/70 text-sm">GraphQL</span>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <Zap className="w-5 h-5 text-white/60" />
-                    <span className="text-white/70 text-sm">WebSockets</span>
-                  </div>
+                <div className="bg-primary/10 rounded-2xl p-6 flex flex-col items-center justify-center space-y-2 border border-primary/20">
+                  <Zap className="w-6 h-6 text-primary" />
+                  <div className="text-2xl font-bold tracking-tighter text-primary">Fast</div>
+                  <p className="text-[8px] uppercase tracking-widest text-primary/70">Delivery</p>
                 </div>
               </div>
             </div>
           </Card>
+
         </div>
       </section>
 
-      <section id="work" className="max-w-7xl mx-auto px-6 py-32 overflow-hidden">
-        <div className="flex flex-col md:flex-row items-end justify-between mb-16 gap-8">
-          <div className="space-y-4">
-            <p className="text-orange-500 font-medium tracking-[0.3em] uppercase text-xs">Selection</p>
-            <h2 className="text-6xl md:text-8xl font-bold tracking-tighter">Featured Work</h2>
+      {/* Technical Arsenal Section - A14 Style */}
+      <section id="arsenal" className="max-w-7xl mx-auto px-6 py-32 border-t border-border/40">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24">
+          {/* Left Column: Heading */}
+          <div className="lg:col-span-4 space-y-4">
+            <div className="flex items-baseline gap-4">
+              <h2 className="text-5xl md:text-6xl font-medium tracking-tighter uppercase">Arsenal</h2>
+              <span className="text-xl font-light italic text-muted-foreground">(16)</span>
+            </div>
+            <p className="text-muted-foreground text-lg font-light max-w-xs leading-relaxed">
+              A curated collection of tools and technologies I've mastered over the years to build scalable digital products.
+            </p>
           </div>
-          <p className="text-muted-foreground max-w-xs md:text-right leading-relaxed text-lg italic transition-all duration-700">
-            "Design is not just what it looks like and feels like. Design is how it works."
-          </p>
+
+          {/* Right Column: Skills List */}
+          <div className="lg:col-span-8">
+            <div className="divide-y divide-border/40">
+              {[
+                { category: 'Backend', skills: 'Node.js, Python, PostgreSQL, Express, MongoDB' },
+                { category: 'Frontend', skills: 'React, Next.js, TypeScript, Tailwind, Redux' },
+                { category: 'DevOps', skills: 'Docker, AWS, CI/CD, Kubernetes, Vercel' },
+                { category: 'Tools', skills: 'Git, REST APIs, GraphQL, WebSockets, Figma' },
+              ].map((item, i) => (
+                <div key={item.category} className="group py-12 flex flex-col md:flex-row md:items-baseline justify-between gap-4 first:pt-0 last:pb-0 cursor-default">
+                  <div className="flex items-baseline gap-6">
+                    <span className="text-[10px] font-bold text-muted-foreground uppercase tracking-[0.3em]">0{i + 1}</span>
+                    <h3 className="text-3xl md:text-4xl font-medium tracking-tighter uppercase group-hover:text-primary transition-colors">
+                      {item.category}
+                    </h3>
+                  </div>
+                  <p className="text-muted-foreground text-lg font-light md:text-right max-w-md group-hover:text-foreground transition-colors">
+                    {item.skills}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="work" className="max-w-7xl mx-auto px-6 py-32 border-t border-border/40">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 mb-24">
+          <div className="lg:col-span-6 space-y-4">
+            <div className="flex items-baseline gap-4">
+              <p className="text-primary font-bold tracking-[0.4em] uppercase text-[9px]">Works</p>
+              <span className="text-[10px] font-medium text-muted-foreground uppercase italic tracking-widest">(04 Selected)</span>
+            </div>
+            <h2 className="text-6xl md:text-7xl lg:text-8xl font-medium tracking-tighter uppercase leading-none">
+              Featured <br />Projects
+            </h2>
+          </div>
+          <div className="lg:col-span-6 lg:pt-16">
+            <p className="text-muted-foreground text-xl md:text-2xl font-light leading-relaxed max-w-xl">
+              A collection of digital products where intentional design meets robust engineering. Each project is a testament to the pursuit of performance and aesthetic clarity.
+            </p>
+          </div>
         </div>
 
         <ProjectBentoGrid projects={projects} />
       </section>
 
-      <section className="mt-32 px-6 max-w-7xl mx-auto mb-24">
-        <h2 className="text-5xl font-bold mb-16 text-center">More About Me</h2>
+      <section className="max-w-7xl mx-auto px-6 py-24 border-t border-border/40 mt-32">
+        <div className="space-y-4 mb-16">
+          <p className="text-primary font-bold tracking-[0.3em] uppercase text-[9px]">Further</p>
+          <h2 className="text-5xl md:text-6xl font-medium tracking-tighter uppercase">More About Me</h2>
+        </div>
         <div className="grid grid-cols-1 md:grid-cols-6 lg:grid-cols-12 gap-6">
           {/* Education Card */}
-          <Card className="md:col-span-3 lg:col-span-4 bg-secondary/10 backdrop-blur-xl border-border/40 hover:border-primary/30 transition-all duration-700 group p-8 rounded-[2rem] flex flex-col justify-between min-h-[300px] relative overflow-hidden">
-            <div className="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 group-hover:bg-primary/10 transition-colors" />
-            <div className="w-14 h-14 rounded-2xl bg-background/50 border border-border/50 flex items-center justify-center shadow-sm group-hover:scale-110 transition-transform duration-500">
-              <GraduationCap className="w-7 h-7 text-primary" />
+          <Card className="md:col-span-3 lg:col-span-4 bg-card border-border/40 hover:border-primary/30 transition-all duration-700 group p-10 rounded-xl flex flex-col justify-between min-h-[350px] relative overflow-hidden shadow-sm hover:shadow-md">
+            <div className="w-12 h-12 rounded-full bg-secondary flex items-center justify-center group-hover:scale-110 transition-transform duration-700">
+              <GraduationCap className="w-5 h-5 text-primary" />
             </div>
-            <div className="space-y-2 relative z-10">
-              <p className="text-primary font-medium tracking-[0.2em] uppercase text-[10px]">Foundation</p>
-              <h3 className="font-bold text-3xl text-foreground">Education</h3>
-              <p className="text-muted-foreground text-sm leading-relaxed max-w-[200px]">BTech in Chemical Engineering from a premier institute.</p>
+            <div className="space-y-4">
+              <div className="space-y-2">
+                <p className="text-primary font-bold tracking-[0.3em] uppercase text-[9px]">Foundation</p>
+                <h3 className="text-4xl font-medium tracking-tighter text-card-foreground">Education</h3>
+              </div>
+              <p className="text-muted-foreground text-base font-light leading-relaxed">
+                BTech in Chemical Engineering from a premier national institute. A journey of analytical problem solving.
+              </p>
             </div>
           </Card>
 
           {/* Resume Card */}
-          <Card className="md:col-span-3 lg:col-span-4 bg-secondary/10 backdrop-blur-xl border-border/40 hover:border-primary/30 transition-all duration-700 group p-8 rounded-[2rem] flex flex-col justify-between min-h-[300px] relative overflow-hidden">
-            <div className="absolute bottom-0 left-0 w-32 h-32 bg-primary/5 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2 group-hover:bg-primary/10 transition-colors" />
-            <div className="w-14 h-14 rounded-2xl bg-background/50 border border-border/50 flex items-center justify-center shadow-sm group-hover:scale-110 transition-transform duration-500">
-              <FileText className="w-7 h-7 text-primary" />
+          <Card className="md:col-span-3 lg:col-span-4 bg-card border-border/40 hover:border-primary/30 transition-all duration-700 group p-10 rounded-xl flex flex-col justify-between min-h-[350px] relative overflow-hidden shadow-sm hover:shadow-md">
+             <div className="w-12 h-12 rounded-full bg-secondary flex items-center justify-center group-hover:scale-110 transition-transform duration-700">
+              <FileText className="w-5 h-5 text-primary" />
             </div>
-            <div className="space-y-4 relative z-10">
-              <div>
-                <p className="text-primary font-medium tracking-[0.2em] uppercase text-[10px]">Credentials</p>
-                <h3 className="font-bold text-3xl text-foreground">Resume</h3>
+            <div className="space-y-6">
+              <div className="space-y-2">
+                <p className="text-primary font-bold tracking-[0.3em] uppercase text-[9px]">Credentials</p>
+                <h3 className="text-4xl font-medium tracking-tighter text-card-foreground">Resume</h3>
               </div>
-              <Button variant="outline" className="rounded-full border-border/50 hover:bg-primary hover:text-primary-foreground transition-all group/btn w-fit">
+              <Button variant="outline" className="rounded-full h-12 px-8 text-xs border-border/50 hover:bg-primary hover:text-primary-foreground transition-all group/btn w-full md:w-fit font-bold uppercase tracking-widest">
                 Download PDF
                 <ArrowUpRight className="ml-2 w-4 h-4 group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5 transition-transform" />
               </Button>
             </div>
           </Card>
 
-          {/* Philosophy Card (Links to new page) */}
+          {/* Philosophy Card */}
           <Link href="/journal" className="md:col-span-6 lg:col-span-4 block group">
-            <Card className="bg-zinc-950 border-zinc-900 overflow-hidden hover:border-primary/40 transition-all duration-1000 shadow-2xl relative p-0 border-0 rounded-[2rem] min-h-[300px] cursor-pointer h-full">
-              <div className="relative h-full min-h-[300px] overflow-hidden">
-                <Image
-                  src="/images/about-philosophy-bg.jpeg"
-                  alt="Serene Mountain Landscape"
-                  fill
-                  className="object-cover opacity-60 group-hover:opacity-80 group-hover:scale-110 transition-all duration-[2000ms] ease-out"
-                />
-                <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-all duration-1000" />
-                <div className="absolute inset-0 flex flex-col justify-end p-8">
-                  <div className="space-y-2 transform transition-all duration-1000 group-hover:-translate-y-2">
-                    <h3 className="text-3xl font-medium text-white tracking-tight uppercase">
-                      Journey is Home
-                    </h3>
-                    <p className="text-white/60 text-xs leading-relaxed font-light max-w-[240px]">
-                      Finding clarity in the stillness of the mountains. Click to read more.
-                    </p>
-                  </div>
+            <Card className="bg-zinc-950 border-zinc-900 overflow-hidden hover:border-primary/40 transition-all duration-1000 shadow-2xl relative p-0 border-0 rounded-xl min-h-[350px] h-full">
+              <Image
+                src="/images/about-philosophy-bg.jpeg"
+                alt="Serene Mountain Landscape"
+                fill
+                className="object-cover opacity-40 group-hover:opacity-60 group-hover:scale-110 transition-all duration-[2000ms] ease-out"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+              <div className="absolute inset-0 flex flex-col justify-end p-10">
+                <div className="space-y-3 transform transition-all duration-1000 group-hover:-translate-y-2">
+                  <p className="text-primary font-bold tracking-[0.3em] uppercase text-[9px]">Spirit</p>
+                  <h3 className="text-4xl font-medium text-white tracking-tighter uppercase">
+                    Journey is <br />Home
+                  </h3>
+                  <p className="text-white/50 text-sm leading-relaxed font-light max-w-[240px]">
+                    Finding clarity and purpose in the stillness of nature.
+                  </p>
                 </div>
               </div>
             </Card>
@@ -496,51 +428,50 @@ export default function Portfolio() {
         </div>
       </section>
 
-      <footer className="py-12 px-6 border-t border-border mt-32">
-        <div className="max-w-7xl mx-auto">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-6">
-            <p className="text-sm text-muted-foreground">© 2025 Adarsh. All rights reserved.</p>
-
-            <div className="flex items-center gap-4">
-              <a
-                href="mailto:adarsh@example.com"
-                className="w-10 h-10 rounded-full bg-secondary hover:bg-accent flex items-center justify-center transition-colors"
-                aria-label="Email"
-              >
-                <Mail className="w-4 h-4 text-foreground" />
-              </a>
-
-              <a
-                href="https://github.com"
-                className="w-10 h-10 rounded-full bg-secondary hover:bg-accent flex items-center justify-center transition-colors"
-                aria-label="GitHub"
-              >
-                <Github className="w-4 h-4 text-foreground" />
-              </a>
-
-              <a
-                href="https://linkedin.com"
-                className="w-10 h-10 rounded-full bg-secondary hover:bg-accent flex items-center justify-center transition-colors"
-                aria-label="LinkedIn"
-              >
-                <Linkedin className="w-4 h-4 text-foreground" />
-              </a>
-
-              <a
-                href="https://twitter.com"
-                className="w-10 h-10 rounded-full bg-secondary hover:bg-accent flex items-center justify-center transition-colors"
-                aria-label="Twitter"
-              >
-                <Twitter className="w-4 h-4 text-foreground" />
-              </a>
-
-              <a
-                href="/resume.pdf"
-                className="w-10 h-10 rounded-full bg-secondary hover:bg-accent flex items-center justify-center transition-colors"
-                aria-label="Resume"
-              >
-                <FileText className="w-4 h-4 text-foreground" />
-              </a>
+      <footer className="py-24 px-6 border-t border-border/40 mt-32 bg-background">
+        <div className="max-w-7xl mx-auto space-y-16">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-end">
+            <div className="space-y-6">
+              <h2 className="text-5xl md:text-7xl font-medium tracking-tighter leading-none">Let's build <br />together.</h2>
+              <p className="text-muted-foreground text-xl font-light max-w-sm">
+                Open for interesting collaborations and full-time opportunities.
+              </p>
+              <div className="flex flex-wrap gap-4 pt-4">
+                <a href="mailto:saxenaadarsh35@gmail.com">
+                  <Button className="rounded-full h-14 px-10 text-xs bg-primary text-primary-foreground font-bold uppercase tracking-widest hover:opacity-90">
+                    Get in touch
+                  </Button>
+                </a>
+              </div>
+            </div>
+            
+            <div className="flex flex-col md:items-end space-y-8">
+              <div className="flex items-center gap-6">
+                {[
+                  { icon: Github, href: "https://github.com", label: "Github" },
+                  { icon: Linkedin, href: "https://linkedin.com", label: "LinkedIn" },
+                  { icon: Twitter, href: "https://twitter.com", label: "Twitter" },
+                  { icon: Mail, href: "mailto:saxenaadarsh35@gmail.com", label: "Email" }
+                ].map((social) => (
+                  <a 
+                    key={social.label}
+                    href={social.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group flex flex-col items-center gap-2"
+                  >
+                    <div className="w-12 h-12 rounded-full bg-secondary flex items-center justify-center group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-500">
+                      <social.icon className="w-5 h-5" />
+                    </div>
+                    <span className="text-[8px] font-bold uppercase tracking-widest text-muted-foreground opacity-0 group-hover:opacity-100 transition-opacity">
+                      {social.label}
+                    </span>
+                  </a>
+                ))}
+              </div>
+              <p className="text-[10px] font-bold tracking-[0.4em] text-muted-foreground uppercase">
+                ADARSH SAXENA © 2025
+              </p>
             </div>
           </div>
         </div>
