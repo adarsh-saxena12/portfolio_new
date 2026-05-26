@@ -194,17 +194,17 @@ export default function Portfolio() {
           </Card>
 
           {/* Introduction Card - Spans 6 columns */}
-          <Card className="md:col-span-6 lg:col-span-6 bg-card border-border/40 p-10 flex flex-col justify-center rounded-xl shadow-sm space-y-8">
+          <Card className="md:col-span-6 lg:col-span-6 bg-[#0f0720] border-white/5 p-10 flex flex-col justify-center rounded-xl shadow-2xl space-y-8 group hover:border-primary/50 transition-all duration-500">
             <div className="space-y-2">
               <p className="text-primary font-bold tracking-[0.3em] uppercase text-[9px]">The Intro</p>
-              <h3 className="text-4xl font-medium tracking-tighter text-card-foreground">Hi, I'm Adarsh 👋</h3>
+              <h3 className="text-4xl font-medium tracking-tighter text-white">Hi, I'm Adarsh 👋</h3>
             </div>
-            <p className="text-muted-foreground text-lg md:text-xl font-light leading-relaxed">
+            <p className="text-zinc-400 text-lg md:text-xl font-light leading-relaxed">
               I'm a full-stack developer obsessed with creating beautiful, performant web experiences. Currently scaling digital products at Algorizz, I combine intentional design with clean, scalable code.
             </p>
             <div className="pt-4 flex items-center gap-4">
-               <div className="w-12 h-[1px] bg-border" />
-               <span className="text-[10px] font-bold tracking-widest text-muted-foreground uppercase italic">Based in Earth</span>
+               <div className="w-12 h-[1px] bg-white/10" />
+               <span className="text-[10px] font-bold tracking-widest text-zinc-500 uppercase italic">Based in India</span>
             </div>
           </Card>
 
@@ -262,35 +262,33 @@ export default function Portfolio() {
               <p className="text-white/20 text-[10px] font-bold tracking-widest uppercase">Click to navigate</p>
               <ChevronRight className="w-8 h-8 text-white group-hover:translate-x-2 transition-transform duration-500" />
             </div>
-          </Card>
-
-          {/* Stats Card - Spans 4 columns */}
-          <Card className="md:col-span-6 lg:col-span-4 bg-card border-border/40 p-8 h-[380px] rounded-xl shadow-sm relative overflow-hidden group">
-            <div className="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
+          </Card>          {/* Stats Card - Spans 4 columns */}
+          <Card className="md:col-span-6 lg:col-span-4 bg-[#1a0b2e] border-white/5 p-8 h-[380px] rounded-xl shadow-2xl relative overflow-hidden group hover:border-primary/50 transition-all duration-500">
+            <div className="absolute top-0 right-0 w-32 h-32 bg-primary/20 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
             
             <div className="relative h-full flex flex-col justify-between">
                <div className="space-y-2">
                  <p className="text-primary font-bold tracking-[0.3em] uppercase text-[9px]">Activity</p>
-                 <h3 className="text-3xl font-medium tracking-tighter text-card-foreground">Metrics</h3>
+                 <h3 className="text-3xl font-medium tracking-tighter text-white">Metrics</h3>
                </div>
-
+ 
                <div className="grid grid-cols-2 gap-4">
-                <div className="bg-secondary/30 rounded-2xl p-6 flex flex-col items-center justify-center space-y-2 group-hover:bg-secondary/50 transition-colors">
-                  <Github className="w-6 h-6 text-foreground/70" />
-                  <div className="text-2xl font-bold tracking-tighter">1.9k</div>
-                  <p className="text-[8px] uppercase tracking-widest text-muted-foreground">Commits</p>
+                <div className="bg-white/5 rounded-2xl p-6 flex flex-col items-center justify-center space-y-2 group-hover:bg-white/10 transition-colors">
+                  <Github className="w-6 h-6 text-white/70" />
+                  <div className="text-2xl font-bold tracking-tighter text-white">1.9k</div>
+                  <p className="text-[8px] uppercase tracking-widest text-zinc-500">Commits</p>
                 </div>
-                <div className="bg-secondary/30 rounded-2xl p-6 flex flex-col items-center justify-center space-y-2 group-hover:bg-secondary/50 transition-colors">
-                  <Code2 className="w-6 h-6 text-foreground/70" />
-                  <div className="text-2xl font-bold tracking-tighter">130+</div>
-                  <p className="text-[8px] uppercase tracking-widest text-muted-foreground">Projects</p>
+                <div className="bg-white/5 rounded-2xl p-6 flex flex-col items-center justify-center space-y-2 group-hover:bg-white/10 transition-colors">
+                  <Code2 className="w-6 h-6 text-white/70" />
+                  <div className="text-2xl font-bold tracking-tighter text-white">130+</div>
+                  <p className="text-[8px] uppercase tracking-widest text-zinc-500">Projects</p>
                 </div>
-                <div className="bg-secondary/30 rounded-2xl p-6 flex flex-col items-center justify-center space-y-2 group-hover:bg-secondary/50 transition-colors">
-                  <BarChart3 className="w-6 h-6 text-foreground/70" />
-                  <div className="text-2xl font-bold tracking-tighter">99.9%</div>
-                  <p className="text-[8px] uppercase tracking-widest text-muted-foreground">Uptime</p>
+                <div className="bg-white/5 rounded-2xl p-6 flex flex-col items-center justify-center space-y-2 group-hover:bg-white/10 transition-colors">
+                  <BarChart3 className="w-6 h-6 text-white/70" />
+                  <div className="text-2xl font-bold tracking-tighter text-white">99.9%</div>
+                  <p className="text-[8px] uppercase tracking-widest text-zinc-500">Uptime</p>
                 </div>
-                <div className="bg-primary/10 rounded-2xl p-6 flex flex-col items-center justify-center space-y-2 border border-primary/20">
+                <div className="bg-primary/20 rounded-2xl p-6 flex flex-col items-center justify-center space-y-2 border border-primary/30">
                   <Zap className="w-6 h-6 text-primary" />
                   <div className="text-2xl font-bold tracking-tighter text-primary">Fast</div>
                   <p className="text-[8px] uppercase tracking-widest text-primary/70">Delivery</p>
