@@ -26,7 +26,15 @@ export const metadata: Metadata = {
   },
 }
 
+import { Figtree } from "next/font/google"
 import Header from "@/components/header"
+
+const figtree = Figtree({
+  subsets: ["latin"],
+  variable: "--font-sans",
+  weight: ["300", "400", "500", "600", "700", "800"],
+  display: "swap",
+})
 
 export default function RootLayout({
   children,
@@ -34,8 +42,8 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en">
-      <body className={`font-sans antialiased`}>
+    <html lang="en" className={figtree.variable}>
+      <body className="font-sans antialiased bg-background text-foreground">
         <Header />
         <main>{children}</main>
         <Analytics />

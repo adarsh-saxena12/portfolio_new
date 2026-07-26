@@ -1,297 +1,292 @@
 "use client"
 
+import { Great_Vibes } from "next/font/google"
+
+const greatVibes = Great_Vibes({ 
+  weight: "400", 
+  subsets: ["latin"],
+  display: "swap"
+})
+
 import { useState, useEffect, useRef } from "react"
 import { Card } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
-import {
-  Dialog,
-  DialogContent,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from "@/components/ui/dialog"
 import {
   Github,
   Linkedin,
   Mail,
   Twitter,
   Code2,
-  Music,
-  ExternalLink,
-  ChevronLeft,
   ChevronRight,
   FileText,
-  Layers,
-  Terminal,
   BarChart3,
-  Pause,
-  Play,
-  Database,
-  Server,
-  Palette,
-  Cloud,
   Zap,
-  GitBranch,
   GraduationCap,
   ArrowUpRight,
 } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
 import ProjectBentoGrid from "@/components/ProjectBentoGrid"
+import GenerativeCanvas from "@/components/generative-canvas"
 
 const projects = [
   {
     id: 1,
-    title: "Envval",
-    description: "Manage your environmental secrets with ease and security in a modern platform.",
+    title: "Envval Platform",
+    description: "Cloud environment secrets & config manager built for developer teams.",
     image: "/images/screenshot-202025-12-29-20221418.png",
     bgImage: "/images/bg-1.png",
-    tech: ["Next.js", "Stripe", "PostgreSQL"],
+    tech: ["Next.js", "TypeScript", "PostgreSQL"],
     link: "#",
     github: "https://github.com",
   },
   {
     id: 2,
-    title: "Pixlr Chat",
-    description: "Multi-modal AI chat app with AI agents for intelligent conversations.",
+    title: "Pixlr AI Chat",
+    description: "Multi-modal conversational AI suite powered by custom agent workflows.",
     image: "/images/screenshot-202025-12-29-20221436.png",
     bgImage: "/images/bg-2.png",
-    tech: ["React", "OpenAI", "TypeScript"],
+    tech: ["React", "OpenAI", "Tailwind"],
     link: "#",
     github: "https://github.com",
   },
   {
     id: 3,
-    title: "Echo Chat",
-    description: "Real-time chat rooms for seamless communication and collaboration.",
+    title: "Echo Realtime",
+    description: "Ultra low-latency collaborative workspace for remote engineering teams.",
     image: "/images/screenshot-202025-12-29-20221354.png",
     bgImage: "/images/bg-3.png",
-    tech: ["Vue.js", "Firebase", "Tailwind"],
+    tech: ["WebSockets", "Node.js", "Redis"],
     link: "#",
     github: "https://github.com",
   },
   {
     id: 4,
-    title: "UI Craft",
-    description: "A comprehensive design system and component library for modern web apps.",
+    title: "UI Craft System",
+    description: "Museum-grade accessible component library and design token system.",
     image: "/images/screenshot-202025-12-29-20221453.png",
     bgImage: "/images/bg-4.png",
-    tech: ["Next.js", "Chart.js", "MongoDB"],
+    tech: ["React", "Radix UI", "Tailwind"],
     link: "#",
     github: "https://github.com",
   },
   {
     id: 5,
-    title: "Zen Flow",
-    description: "Mindfulness and productivity tracker with integrated meditation tools.",
-    image: "/images/blue-hero.png",
+    title: "Aura Telemetry",
+    description: "Real-time performance dashboards and analytics for SaaS platforms.",
+    image: "/modern-web-app-dashboard-ui-dark-theme.jpg",
     bgImage: "/images/bg-5.png",
-    tech: ["React Native", "Firebase", "HealthKit"],
+    tech: ["Next.js", "Recharts", "Prisma"],
     link: "#",
     github: "https://github.com",
   },
   {
     id: 6,
-    title: "Swiss Analytics",
-    description: "Minimalist data visualization dashboard for precise business insights.",
-    image: "/images/swiss-minimal.png",
+    title: "Journal Platform",
+    description: "Minimalist editorial reading experience for long-form engineering essays.",
+    image: "/images/read-1.png",
     bgImage: "/images/bg-6.png",
-    tech: ["D3.js", "Next.js", "Prisma"],
+    tech: ["MDX", "Next.js", "Tailwind"],
     link: "#",
     github: "https://github.com",
   },
 ]
 
-
-import GenerativeCanvas from "@/components/generative-canvas"
-
 export default function Portfolio() {
-  const [currentSkill, setCurrentSkill] = useState(0)
   const [currentExperience, setCurrentExperience] = useState(0)
-  const [isPlaying, setIsPlaying] = useState(false)
 
   return (
     <div className="min-h-screen bg-background text-foreground transition-colors duration-300">
-      <section id="home" className="min-h-screen flex flex-col justify-center bg-background px-6 relative overflow-hidden">
-        {/* Subtle Background Element */}
-        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/5 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/4" />
-        
-        <div className="max-w-7xl mx-auto w-full space-y-24 relative z-10">
-          {/* Top Metadata */}
-          <div className="flex justify-between items-end border-b border-border/40 pb-8">
-            <div className="space-y-1">
-              <p className="text-[10px] font-bold tracking-[0.4em] text-primary uppercase">Adarsh Saxena</p>
-              <p className="text-[10px] font-medium tracking-[0.2em] text-muted-foreground uppercase italic">Software Development Engineer</p>
-            </div>
-            <div className="hidden md:flex flex-col items-end space-y-1">
-              <span className="text-[9px] font-black tracking-[0.4em] text-foreground uppercase">Independent / Studio</span>
-              <span className="text-[9px] font-medium tracking-[0.2em] text-muted-foreground uppercase">Based in India © 2025</span>
-            </div>
-          </div>
-
-          {/* Main Headline */}
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
-            <div className="lg:col-span-8">
-              <div className="space-y-0">
-                <h1 className="text-6xl md:text-8xl lg:text-[9rem] font-medium tracking-tighter leading-[0.8] uppercase">
-                  Digital
-                </h1>
-                <h1 className="text-6xl md:text-8xl lg:text-[9rem] font-extralight tracking-tighter leading-[0.8] uppercase text-foreground">
-                  Architect
-                </h1>
+      {/* HERO SECTION - Dual Rounded Cards Inspired by Modern SaaS Design */}
+      <section id="home" className="w-full pt-4 md:pt-6 pb-12 md:pb-20 px-4 md:px-6 max-w-7xl mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-5 items-stretch min-h-0 lg:min-h-[580px]">
+          
+          {/* Left Hero Card - Soft Grey Card Matching Screenshot */}
+          <div className="lg:col-span-6 bg-[#eef0f3] dark:bg-zinc-900/80 border border-border/50 rounded-2xl md:rounded-[2.5rem] p-6 sm:p-8 md:p-14 flex flex-col justify-between relative overflow-hidden group shadow-sm transition-all duration-500 hover:border-border/80 min-h-0 sm:min-h-[500px]">
+            
+            <div className="relative z-10 space-y-4 sm:space-y-6 md:space-y-8 my-auto">
+              {/* Eyebrow Tag */}
+              <div className="inline-flex items-center gap-1.5 px-3 py-1 sm:px-4 sm:py-1.5 rounded-full bg-white/90 dark:bg-zinc-800/90 text-foreground/70 font-mono text-[10px] sm:text-[11px] font-medium uppercase tracking-widest border border-border/50 shadow-2xs">
+                <span>FULLSTACK SOFTWARE ENGINEER</span>
+                <span className="text-foreground/40">&rsaquo;</span>
               </div>
-            </div>
-            <div className="lg:col-span-4 lg:pt-12 space-y-12">
-              <p className="text-muted-foreground text-xl md:text-2xl font-light leading-relaxed max-w-sm">
-                Obsessed with the intersection of functional engineering and high-end aesthetic clarity. Currently scaling products at Algorizz.
+
+              {/* Bold Geometric Headline matching exact Figtree specs */}
+              <h1 className="text-2xl sm:text-[40px] lg:text-[56px] font-medium text-[#202020] dark:text-[#f0f0f0] leading-snug lg:leading-[60px] tracking-tight lg:tracking-[-1.4px] max-w-[520px]">
+                The Engineering Layer for Modern Web Apps
+              </h1>
+
+              {/* Subtitle Paragraph matching exact Figtree specs */}
+              <p className="text-sm sm:text-[18px] font-normal text-[#404040] dark:text-[#a0a0a0] leading-relaxed sm:leading-[28px] tracking-normal max-w-[520px]">
+                Adarsh Saxena builds high-performance, scalable web applications combining robust fullstack architecture with museum-grade aesthetic clarity.
               </p>
-              
-              <div className="flex flex-col sm:flex-row items-start sm:items-center gap-10 pt-4">
-                <button 
-                  onClick={() => document.getElementById('work')?.scrollIntoView({ behavior: 'smooth' })}
-                  className="group relative flex items-center gap-4 text-[10px] font-black uppercase tracking-[0.4em] text-foreground"
-                >
-                  <div className="w-14 h-14 rounded-full border border-border flex items-center justify-center group-hover:bg-primary group-hover:border-primary transition-all duration-500">
-                    <ArrowUpRight className="w-5 h-5 group-hover:text-primary-foreground transition-colors" />
-                  </div>
-                  <span>Explore Work</span>
-                </button>
-                
-                <Link href="/contact" className="group flex items-center gap-3">
-                  <div className="w-2 h-2 rounded-full bg-primary animate-pulse" />
-                  <span className="text-[10px] font-black uppercase tracking-[0.4em] text-foreground group-hover:text-primary transition-colors border-b border-transparent group-hover:border-primary/40 pb-1">
-                    Get in touch
-                  </span>
-                </Link>
+
+              {/* Pill Action Buttons - Minimal & Compact on Mobile */}
+              <div className="flex flex-wrap items-center gap-3 pt-2 md:pt-4">
+                <a href="#about">
+                  <Button className="rounded-full h-10 px-5 sm:h-12 sm:px-8 text-xs sm:text-sm font-semibold bg-foreground text-background hover:bg-foreground/90 transition-all duration-300 shadow-md">
+                    Explore Work
+                  </Button>
+                </a>
+                <a href="/hire-me">
+                  <Button variant="outline" className="rounded-full h-10 px-5 sm:h-12 sm:px-8 text-xs sm:text-sm font-medium bg-white dark:bg-zinc-800 border-border/80 hover:bg-slate-50 dark:hover:bg-zinc-700 transition-all duration-300 shadow-2xs">
+                    Hire Me
+                  </Button>
+                </a>
               </div>
             </div>
           </div>
 
-          {/* Bottom Badge/Scroll */}
-          <div className="flex items-center gap-6 pt-12">
-            <div className="w-12 h-12 rounded-full border border-border/40 flex items-center justify-center animate-bounce">
-               <ChevronRight className="w-5 h-5 text-muted-foreground rotate-90" />
+          {/* Right Hero Card - Sunset Silhouette Aesthetic Image (No Hover Zoom) */}
+          <div className="lg:col-span-6 relative rounded-2xl md:rounded-[2.5rem] overflow-hidden min-h-[260px] sm:min-h-[400px] lg:min-h-[580px] shadow-md border border-border/30 group">
+            <Image 
+              src="/images/hero_man_sunset_far.png" 
+              alt="Developer Dusk Silhouette Artwork" 
+              fill 
+              className="object-cover"
+              priority
+            />
+            {/* Soft Light Overlay - Bright & Vibrant */}
+            <div className="absolute inset-0 bg-gradient-to-t from-black/35 via-transparent to-transparent pointer-events-none" />
+            
+            {/* Live Status Badge at bottom */}
+            <div className="absolute bottom-4 left-4 right-4 sm:bottom-8 sm:left-8 sm:right-8 z-10 flex flex-wrap gap-3 justify-between items-end">
+              <div className="space-y-0.5">
+                <p className="text-white/90 font-mono text-[9px] sm:text-[10px] uppercase tracking-widest">Aesthetic & Engineering</p>
+                <p className="text-white text-base sm:text-xl font-semibold tracking-tight drop-shadow-sm">Algorizz & Open Source</p>
+              </div>
+              <div className="inline-flex items-center gap-1.5 px-3 py-1 sm:px-3.5 sm:py-1.5 rounded-full bg-black/30 backdrop-blur-md border border-white/30 text-white text-[11px] sm:text-xs font-mono shadow-sm">
+                <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+                <span>Available 2026</span>
+              </div>
             </div>
-            <span className="text-[10px] font-bold tracking-[0.4em] text-muted-foreground uppercase">Scroll to Discover</span>
           </div>
+
         </div>
       </section>
 
-      <section id="about" className="max-w-7xl mx-auto px-6 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-6 lg:grid-cols-12 gap-6">
-          {/* Creative Developer Card - Spans 6 columns */}
-          <Card className="md:col-span-6 lg:col-span-6 bg-card border-border/40 overflow-hidden group hover:border-primary/30 transition-all duration-700 relative rounded-xl shadow-sm hover:shadow-md">
-            <div className="absolute inset-0 z-0 opacity-40 group-hover:opacity-60 transition-opacity">
+      {/* ABOUT SECTION */}
+      <section id="about" className="max-w-7xl mx-auto px-6 py-20">
+        <div className="grid grid-cols-1 md:grid-cols-6 lg:grid-cols-12 gap-4 lg:gap-5">
+          
+          {/* Creative Developer Card */}
+          <Card className="md:col-span-6 lg:col-span-6 bg-card border border-border/10 hover:border-foreground/30 overflow-hidden group transition-all duration-700 relative rounded-2xl hover:bg-muted/30">
+            <div className="absolute inset-0 z-0 opacity-10 group-hover:opacity-30 transition-opacity">
               <GenerativeCanvas />
             </div>
-            <div className="relative h-[320px] flex flex-col justify-end p-10 z-10">
+
+            <div className="relative h-[400px] flex flex-col justify-end p-8 md:p-10 z-10">
               <div className="space-y-4 transform transition-transform duration-700 group-hover:-translate-y-2">
-                <p className="text-primary font-bold tracking-[0.3em] uppercase text-[9px]">Current Role</p>
-                <h3 className="text-4xl md:text-5xl font-medium tracking-tighter text-card-foreground leading-tight">SDE @ <br />Algorizz</h3>
+                <p className="text-foreground font-bold tracking-[0.3em] uppercase text-[9px]">Current Role</p>
+                <h3 className="text-4xl md:text-5xl font-medium tracking-tighter text-foreground leading-tight">SDE @ <br />Algorizz</h3>
                 <p className="text-muted-foreground font-light text-lg max-w-xs">Building the future as an SDE for the past year at a high-growth startup.</p>
               </div>
             </div>
           </Card>
 
-          {/* Introduction Card - Spans 6 columns */}
-          <Card className="md:col-span-6 lg:col-span-6 bg-[#0f0720] border-white/5 p-10 flex flex-col justify-center rounded-xl shadow-2xl space-y-8 group hover:border-primary/50 transition-all duration-500">
-            <div className="space-y-2">
-              <p className="text-primary font-bold tracking-[0.3em] uppercase text-[9px]">The Intro</p>
-              <h3 className="text-4xl font-medium tracking-tighter text-white">Hi, I'm Adarsh 👋</h3>
+          {/* Introduction Card */}
+          <Card className="md:col-span-6 lg:col-span-6 bg-card border-transparent p-8 md:p-10 flex flex-col justify-center rounded-2xl shadow-sm hover:shadow-xl transition-all duration-500 space-y-8 group relative overflow-hidden">
+            <div className="space-y-2 relative z-10">
+              <p className="text-foreground font-bold tracking-[0.3em] uppercase text-[9px]">The Intro</p>
+              <h3 className="text-4xl font-medium tracking-tighter text-foreground">Hi, I'm Adarsh 👋</h3>
             </div>
-            <p className="text-zinc-400 text-lg md:text-xl font-light leading-relaxed">
+            <p className="text-muted-foreground text-lg md:text-xl font-light leading-relaxed">
               I'm a full-stack developer obsessed with creating beautiful, performant web experiences. Currently scaling digital products at Algorizz, I combine intentional design with clean, scalable code.
             </p>
             <div className="pt-4 flex items-center gap-4">
-               <div className="w-12 h-[1px] bg-white/10" />
-               <span className="text-[10px] font-bold tracking-widest text-zinc-500 uppercase italic">Based in India</span>
+               <div className="w-12 h-[1px] bg-border" />
+               <span className="text-[10px] font-bold tracking-widest text-muted-foreground uppercase italic">Based in India</span>
             </div>
           </Card>
 
-          {/* Professional Projects Card - Spans 8 columns */}
+          {/* Professional Projects Card */}
           <Card
-            className="md:col-span-6 lg:col-span-8 bg-zinc-950 border-zinc-900 p-10 flex flex-col justify-between relative group cursor-pointer h-[380px] transition-all duration-700 rounded-xl overflow-hidden shadow-2xl"
+            className="md:col-span-6 lg:col-span-8 bg-card border border-border/10 hover:border-foreground/30 hover:bg-muted/30 p-8 md:p-10 flex flex-col justify-between relative group cursor-pointer min-h-[380px] transition-all duration-700 rounded-2xl overflow-hidden"
             onClick={() => setCurrentExperience((prev) => (prev + 1) % 4)}
           >
-            <div className="absolute top-0 right-0 p-8">
-              <span className="text-[10px] font-bold tracking-[0.4em] text-white/20 uppercase group-hover:text-white/40 transition-colors">
+            <div className="absolute top-0 right-0 p-8 md:p-10 relative z-10">
+              <span className="text-[10px] font-bold tracking-[0.4em] text-muted-foreground uppercase group-hover:text-foreground transition-colors">
                 Experience / 0{currentExperience + 1}
               </span>
             </div>
 
-            <div className="flex items-center gap-4">
-              <h3 className="text-4xl font-medium tracking-tighter text-white">Professional Journey</h3>
-              <div className="w-8 h-8 rounded-full bg-white/5 border border-white/10 flex items-center justify-center">
-                <Zap className="w-4 h-4 text-primary" />
+            <div className="flex items-center gap-4 relative z-10">
+              <h3 className="text-3xl md:text-4xl font-medium tracking-tighter text-foreground">Professional Journey</h3>
+              <div className="w-8 h-8 rounded-full bg-secondary flex items-center justify-center">
+                <Zap className="w-4 h-4 text-foreground" />
               </div>
             </div>
 
-            <div className="flex-1 flex items-center">
-              <div className="space-y-6 w-full">
+            <div className="flex-1 flex items-center my-6">
+              <div className="space-y-4 w-full">
                 {currentExperience === 0 && (
-                  <div className="space-y-2 transition-all duration-700 animate-in fade-in slide-in-from-left-4">
-                    <p className="text-primary text-sm font-bold tracking-widest uppercase">Overview</p>
-                    <h4 className="text-5xl md:text-6xl font-medium tracking-tighter text-white/40">Building the <br />Future.</h4>
+                  <div className="space-y-3 transition-all duration-700 animate-in fade-in slide-in-from-left-4">
+                    <p className="text-foreground text-xs font-bold tracking-widest uppercase">Overview</p>
+                    <h4 className="text-4xl md:text-5xl font-medium tracking-tighter text-muted-foreground">Building the <br />Future.</h4>
                   </div>
                 )}
                 {currentExperience === 1 && (
-                  <div className="space-y-2 transition-all duration-700 animate-in fade-in slide-in-from-left-4">
-                    <p className="text-primary text-sm font-bold tracking-widest uppercase">2023 - Present</p>
-                    <h4 className="text-4xl md:text-5xl font-medium tracking-tighter text-white">E-Commerce Platform</h4>
-                    <p className="text-zinc-400 text-xl font-light">Lead Architect for Global Retail Solutions</p>
+                  <div className="space-y-3 transition-all duration-700 animate-in fade-in slide-in-from-left-4">
+                    <p className="text-foreground text-xs font-bold tracking-widest uppercase">2023 - Present</p>
+                    <h4 className="text-3xl md:text-4xl font-medium tracking-tighter text-foreground">E-Commerce Platform</h4>
+                    <p className="text-muted-foreground text-lg font-normal">Lead Architect for Global Retail Solutions</p>
                   </div>
                 )}
                 {currentExperience === 2 && (
-                  <div className="space-y-2 transition-all duration-700 animate-in fade-in slide-in-from-left-4">
-                    <p className="text-primary text-sm font-bold tracking-widest uppercase">2022 - 2023</p>
-                    <h4 className="text-4xl md:text-5xl font-medium tracking-tighter text-white">Healthcare Suite</h4>
-                    <p className="text-zinc-400 text-xl font-light">Fullstack Dev for Medical Analytics</p>
+                  <div className="space-y-3 transition-all duration-700 animate-in fade-in slide-in-from-left-4">
+                    <p className="text-foreground text-xs font-bold tracking-widest uppercase">2022 - 2023</p>
+                    <h4 className="text-3xl md:text-4xl font-medium tracking-tighter text-foreground">Healthcare Suite</h4>
+                    <p className="text-muted-foreground text-lg font-normal">Fullstack Dev for Medical Analytics</p>
                   </div>
                 )}
                 {currentExperience === 3 && (
-                  <div className="space-y-2 transition-all duration-700 animate-in fade-in slide-in-from-left-4">
-                    <p className="text-primary text-sm font-bold tracking-widest uppercase">2021 - 2022</p>
-                    <h4 className="text-4xl md:text-5xl font-medium tracking-tighter text-white">FinTech Core</h4>
-                    <p className="text-zinc-400 text-xl font-light">Backend Engineer for Secure Payments</p>
+                  <div className="space-y-3 transition-all duration-700 animate-in fade-in slide-in-from-left-4">
+                    <p className="text-foreground text-xs font-bold tracking-widest uppercase">2021 - 2022</p>
+                    <h4 className="text-3xl md:text-4xl font-medium tracking-tighter text-foreground">FinTech Core</h4>
+                    <p className="text-muted-foreground text-lg font-normal">Backend Engineer for Secure Payments</p>
                   </div>
                 )}
               </div>
             </div>
 
-            <div className="flex items-center justify-between">
-              <p className="text-white/20 text-[10px] font-bold tracking-widest uppercase">Click to navigate</p>
-              <ChevronRight className="w-8 h-8 text-white group-hover:translate-x-2 transition-transform duration-500" />
+            <div className="flex items-center justify-between pt-6 border-t border-border/30 relative z-10">
+              <p className="text-muted-foreground text-xs font-medium tracking-wider uppercase">Click card to navigate ({currentExperience + 1}/4)</p>
+              <div className="w-10 h-10 rounded-full bg-foreground text-background flex items-center justify-center group-hover:translate-x-1.5 transition-transform duration-300 shadow-sm shrink-0">
+                <ChevronRight className="w-5 h-5" />
+              </div>
             </div>
-          </Card>          {/* Stats Card - Spans 4 columns */}
-          <Card className="md:col-span-6 lg:col-span-4 bg-[#1a0b2e] border-white/5 p-8 h-[380px] rounded-xl shadow-2xl relative overflow-hidden group hover:border-primary/50 transition-all duration-500">
-            <div className="absolute top-0 right-0 w-32 h-32 bg-primary/20 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
+          </Card>          
+          
+          {/* Stats Card */}
+          <Card className="md:col-span-6 lg:col-span-4 bg-card border border-border/10 hover:border-foreground/30 hover:bg-muted/30 p-8 md:p-10 min-h-[380px] rounded-2xl relative overflow-hidden group transition-all duration-500 flex flex-col justify-between">
+            <div className="absolute top-0 right-0 w-32 h-32 bg-secondary rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
             
             <div className="relative h-full flex flex-col justify-between">
                <div className="space-y-2">
-                 <p className="text-primary font-bold tracking-[0.3em] uppercase text-[9px]">Activity</p>
-                 <h3 className="text-3xl font-medium tracking-tighter text-white">Metrics</h3>
+                 <p className="text-foreground font-bold tracking-[0.3em] uppercase text-[9px]">Activity</p>
+                 <h3 className="text-3xl font-medium tracking-tighter text-foreground">Metrics</h3>
                </div>
  
-               <div className="grid grid-cols-2 gap-4">
-                <div className="bg-white/5 rounded-2xl p-6 flex flex-col items-center justify-center space-y-2 group-hover:bg-white/10 transition-colors">
-                  <Github className="w-6 h-6 text-white/70" />
-                  <div className="text-2xl font-bold tracking-tighter text-white">1.9k</div>
-                  <p className="text-[8px] uppercase tracking-widest text-zinc-500">Commits</p>
+               <div className="grid grid-cols-2 gap-3 mt-6">
+                <div className="bg-secondary/80 rounded-2xl p-5 flex flex-col items-center justify-center space-y-1 group-hover:bg-border transition-colors">
+                  <Github className="w-5 h-5 text-foreground" />
+                  <div className="text-2xl font-bold tracking-tight text-foreground">1.9k</div>
+                  <p className="text-[8px] uppercase tracking-widest text-muted-foreground font-medium">Commits</p>
                 </div>
-                <div className="bg-white/5 rounded-2xl p-6 flex flex-col items-center justify-center space-y-2 group-hover:bg-white/10 transition-colors">
-                  <Code2 className="w-6 h-6 text-white/70" />
-                  <div className="text-2xl font-bold tracking-tighter text-white">130+</div>
-                  <p className="text-[8px] uppercase tracking-widest text-zinc-500">Projects</p>
+                <div className="bg-secondary/80 rounded-2xl p-5 flex flex-col items-center justify-center space-y-1 group-hover:bg-border transition-colors">
+                  <Code2 className="w-5 h-5 text-foreground" />
+                  <div className="text-2xl font-bold tracking-tight text-foreground">130+</div>
+                  <p className="text-[8px] uppercase tracking-widest text-muted-foreground font-medium">Projects</p>
                 </div>
-                <div className="bg-white/5 rounded-2xl p-6 flex flex-col items-center justify-center space-y-2 group-hover:bg-white/10 transition-colors">
-                  <BarChart3 className="w-6 h-6 text-white/70" />
-                  <div className="text-2xl font-bold tracking-tighter text-white">99.9%</div>
-                  <p className="text-[8px] uppercase tracking-widest text-zinc-500">Uptime</p>
+                <div className="bg-secondary/80 rounded-2xl p-5 flex flex-col items-center justify-center space-y-1 group-hover:bg-border transition-colors">
+                  <BarChart3 className="w-5 h-5 text-foreground" />
+                  <div className="text-2xl font-bold tracking-tight text-foreground">99.9%</div>
+                  <p className="text-[8px] uppercase tracking-widest text-muted-foreground font-medium">Uptime</p>
                 </div>
-                <div className="bg-primary/20 rounded-2xl p-6 flex flex-col items-center justify-center space-y-2 border border-primary/30">
-                  <Zap className="w-6 h-6 text-primary" />
-                  <div className="text-2xl font-bold tracking-tighter text-primary">Fast</div>
-                  <p className="text-[8px] uppercase tracking-widest text-primary/70">Delivery</p>
+                <div className="bg-foreground rounded-2xl p-5 flex flex-col items-center justify-center space-y-1">
+                  <Zap className="w-5 h-5 text-background" />
+                  <div className="text-2xl font-bold tracking-tight text-background">Fast</div>
+                  <p className="text-[8px] uppercase tracking-widest text-background/70 font-medium">Delivery</p>
                 </div>
               </div>
             </div>
@@ -300,16 +295,17 @@ export default function Portfolio() {
         </div>
       </section>
 
-      {/* Technical Arsenal Section - A14 Style */}
-      <section id="arsenal" className="max-w-7xl mx-auto px-6 py-32 border-t border-border/40">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24">
+      {/* ARSENAL SECTION */}
+      <section id="arsenal" className="max-w-7xl mx-auto px-6 py-20 border-t border-border/40 relative overflow-hidden group">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-32 relative z-10">
           {/* Left Column: Heading */}
-          <div className="lg:col-span-4 space-y-4">
-            <div className="flex items-baseline gap-4">
-              <h2 className="text-5xl md:text-6xl font-medium tracking-tighter uppercase">Arsenal</h2>
+          <div className="lg:col-span-4 space-y-6 relative">
+
+            <div className="flex items-baseline gap-4 relative z-10">
+              <h2 className="text-5xl md:text-7xl font-medium tracking-tighter uppercase text-foreground">Arsenal</h2>
               <span className="text-xl font-light italic text-muted-foreground">(16)</span>
             </div>
-            <p className="text-muted-foreground text-lg font-light max-w-xs leading-relaxed">
+            <p className="text-muted-foreground text-lg font-light max-w-sm leading-relaxed relative z-10">
               A curated collection of tools and technologies I've mastered over the years to build scalable digital products.
             </p>
           </div>
@@ -323,10 +319,10 @@ export default function Portfolio() {
                 { category: 'DevOps', skills: 'Docker, AWS, CI/CD, Kubernetes, Vercel' },
                 { category: 'Tools', skills: 'Git, REST APIs, GraphQL, WebSockets, Figma' },
               ].map((item, i) => (
-                <div key={item.category} className="group py-12 flex flex-col md:flex-row md:items-baseline justify-between gap-4 first:pt-0 last:pb-0 cursor-default">
-                  <div className="flex items-baseline gap-6">
+                <div key={item.category} className="group py-16 flex flex-col md:flex-row md:items-baseline justify-between gap-6 first:pt-0 last:pb-0 cursor-default transition-all duration-300 hover:px-4">
+                  <div className="flex items-baseline gap-8">
                     <span className="text-[10px] font-bold text-muted-foreground uppercase tracking-[0.3em]">0{i + 1}</span>
-                    <h3 className="text-3xl md:text-4xl font-medium tracking-tighter uppercase group-hover:text-primary transition-colors">
+                    <h3 className="text-4xl md:text-5xl font-medium tracking-tighter uppercase text-foreground group-hover:text-muted-foreground transition-colors">
                       {item.category}
                     </h3>
                   </div>
@@ -340,83 +336,88 @@ export default function Portfolio() {
         </div>
       </section>
 
-      <section id="work" className="max-w-7xl mx-auto px-6 py-32 border-t border-border/40">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 mb-24">
-          <div className="lg:col-span-6 space-y-4">
-            <div className="flex items-baseline gap-4">
-              <p className="text-primary font-bold tracking-[0.4em] uppercase text-[9px]">Works</p>
-              <span className="text-[10px] font-medium text-muted-foreground uppercase italic tracking-widest">(04 Selected)</span>
+      <section id="work" className="max-w-7xl mx-auto px-6 py-16 border-t border-border/40 relative">
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10 relative z-10">
+          <div className="space-y-2">
+            <div className="flex items-center gap-2">
+              <span className="text-[10px] font-bold tracking-[0.3em] uppercase text-foreground">WORKS</span>
+              <span className="text-[11px] font-mono text-muted-foreground font-semibold">(06 Selected)</span>
             </div>
-            <h2 className="text-6xl md:text-7xl lg:text-8xl font-medium tracking-tighter uppercase leading-none">
-              Featured <br />Projects
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-foreground">
+              Featured Projects
             </h2>
           </div>
-          <div className="lg:col-span-6 lg:pt-16">
-            <p className="text-muted-foreground text-xl md:text-2xl font-light leading-relaxed max-w-xl">
-              A collection of digital products where intentional design meets robust engineering. Each project is a testament to the pursuit of performance and aesthetic clarity.
-            </p>
-          </div>
+          <p className="text-muted-foreground text-base font-normal leading-relaxed max-w-md">
+            A curated selection of 6 digital products built with robust fullstack architecture and modern UI clarity.
+          </p>
         </div>
 
         <ProjectBentoGrid projects={projects} />
       </section>
 
-      <section className="max-w-7xl mx-auto px-6 py-24 border-t border-border/40 mt-32">
-        <div className="space-y-4 mb-16">
-          <p className="text-primary font-bold tracking-[0.3em] uppercase text-[9px]">Further</p>
-          <h2 className="text-5xl md:text-6xl font-medium tracking-tighter uppercase">More About Me</h2>
+      {/* MORE ABOUT ME SECTION */}
+      <section className="max-w-7xl mx-auto px-6 py-20 border-t border-border/40 relative overflow-hidden group">
+        
+        <div className="space-y-6 mb-16 relative z-10">
+          <p className="text-foreground font-bold tracking-[0.3em] uppercase text-[9px]">Further</p>
+          <h2 className="text-5xl md:text-7xl font-medium tracking-tighter uppercase text-foreground">More About Me</h2>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-6 lg:grid-cols-12 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-6 lg:grid-cols-12 gap-4 lg:gap-5 relative z-10">
+          
           {/* Education Card */}
-          <Card className="md:col-span-3 lg:col-span-4 bg-card border-border/40 hover:border-primary/30 transition-all duration-700 group p-10 rounded-xl flex flex-col justify-between min-h-[350px] relative overflow-hidden shadow-sm hover:shadow-md">
-            <div className="w-12 h-12 rounded-full bg-secondary flex items-center justify-center group-hover:scale-110 transition-transform duration-700">
-              <GraduationCap className="w-5 h-5 text-primary" />
+          <Card className="md:col-span-3 lg:col-span-4 bg-card border border-border/10 hover:border-foreground/30 hover:bg-muted/30 transition-all duration-700 group p-8 md:p-10 rounded-2xl flex flex-col justify-between min-h-[360px] relative overflow-hidden">
+
+            <div className="w-12 h-12 rounded-full bg-secondary flex items-center justify-center group-hover:scale-110 transition-transform duration-700 relative z-10">
+              <GraduationCap className="w-5 h-5 text-foreground" />
             </div>
-            <div className="space-y-4">
+            <div className="space-y-6 mt-8 relative z-10">
               <div className="space-y-2">
-                <p className="text-primary font-bold tracking-[0.3em] uppercase text-[9px]">Foundation</p>
-                <h3 className="text-4xl font-medium tracking-tighter text-card-foreground">Education</h3>
+                <p className="text-foreground font-bold tracking-[0.3em] uppercase text-[9px]">Foundation</p>
+                <h3 className="text-4xl font-medium tracking-tighter text-foreground">Education</h3>
               </div>
-              <p className="text-muted-foreground text-base font-light leading-relaxed">
+              <p className="text-muted-foreground text-lg font-light leading-relaxed">
                 BTech in Chemical Engineering from a premier national institute. A journey of analytical problem solving.
               </p>
             </div>
           </Card>
 
           {/* Resume Card */}
-          <Card className="md:col-span-3 lg:col-span-4 bg-card border-border/40 hover:border-primary/30 transition-all duration-700 group p-10 rounded-xl flex flex-col justify-between min-h-[350px] relative overflow-hidden shadow-sm hover:shadow-md">
-             <div className="w-12 h-12 rounded-full bg-secondary flex items-center justify-center group-hover:scale-110 transition-transform duration-700">
-              <FileText className="w-5 h-5 text-primary" />
+          <Card className="md:col-span-3 lg:col-span-4 bg-card border border-border/10 hover:border-foreground/30 hover:bg-muted/30 transition-all duration-700 group p-8 md:p-10 rounded-2xl flex flex-col justify-between min-h-[360px] relative overflow-hidden">
+             
+
+
+             <div className="w-12 h-12 rounded-full bg-secondary flex items-center justify-center group-hover:scale-110 transition-transform duration-700 relative z-10">
+              <FileText className="w-5 h-5 text-foreground" />
             </div>
-            <div className="space-y-6">
+            <div className="space-y-8 mt-8 relative z-10">
               <div className="space-y-2">
-                <p className="text-primary font-bold tracking-[0.3em] uppercase text-[9px]">Credentials</p>
-                <h3 className="text-4xl font-medium tracking-tighter text-card-foreground">Resume</h3>
+                <p className="text-foreground font-bold tracking-[0.3em] uppercase text-[9px]">Credentials</p>
+                <h3 className="text-4xl font-medium tracking-tighter text-foreground">Resume</h3>
               </div>
-              <Button variant="outline" className="rounded-full h-12 px-8 text-xs border-border/50 hover:bg-primary hover:text-primary-foreground transition-all group/btn w-full md:w-fit font-bold uppercase tracking-widest">
+              <Button variant="outline" className="rounded-full h-14 px-8 text-xs border-border hover:bg-foreground hover:text-background transition-all group/btn w-full md:w-fit font-bold uppercase tracking-widest">
                 Download PDF
-                <ArrowUpRight className="ml-2 w-4 h-4 group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5 transition-transform" />
+                <ArrowUpRight className="ml-2 w-4 h-4 group-hover/btn:translate-x-1 group-hover/btn:-translate-y-1 transition-transform" />
               </Button>
             </div>
           </Card>
 
           {/* Philosophy Card */}
           <Link href="/journal" className="md:col-span-6 lg:col-span-4 block group">
-            <Card className="bg-zinc-950 border-zinc-900 overflow-hidden hover:border-primary/40 transition-all duration-1000 shadow-2xl relative p-0 border-0 rounded-xl min-h-[350px] h-full">
+            <Card className="bg-foreground border border-border/10 hover:border-foreground/30 overflow-hidden transition-all duration-1000 relative p-0 rounded-2xl min-h-[400px] h-full">
               <Image
                 src="/images/about-philosophy-bg.jpeg"
                 alt="Serene Mountain Landscape"
                 fill
-                className="object-cover opacity-40 group-hover:opacity-60 group-hover:scale-110 transition-all duration-[2000ms] ease-out"
+                className="object-cover opacity-20 group-hover:opacity-40 group-hover:scale-105 transition-all duration-[2000ms] ease-out mix-blend-luminosity"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
-              <div className="absolute inset-0 flex flex-col justify-end p-10">
-                <div className="space-y-3 transform transition-all duration-1000 group-hover:-translate-y-2">
-                  <p className="text-primary font-bold tracking-[0.3em] uppercase text-[9px]">Spirit</p>
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent" />
+              <div className="absolute inset-0 flex flex-col justify-end p-12">
+                <div className="space-y-4 transform transition-all duration-1000 group-hover:-translate-y-2">
+                  <p className="text-white/80 font-bold tracking-[0.3em] uppercase text-[9px]">Spirit</p>
                   <h3 className="text-4xl font-medium text-white tracking-tighter uppercase">
                     Journey is <br />Home
                   </h3>
-                  <p className="text-white/50 text-sm leading-relaxed font-light max-w-[240px]">
+                  <p className="text-white/60 text-base leading-relaxed font-light max-w-[240px]">
                     Finding clarity and purpose in the stillness of nature.
                   </p>
                 </div>
@@ -426,25 +427,53 @@ export default function Portfolio() {
         </div>
       </section>
 
-      <footer className="py-24 px-6 border-t border-border/40 mt-32 bg-background">
-        <div className="max-w-7xl mx-auto space-y-16">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-end">
-            <div className="space-y-6">
-              <h2 className="text-5xl md:text-7xl font-medium tracking-tighter leading-none">Let's build <br />together.</h2>
+      {/* INTELLECTUAL PURSUITS & LIBRARY */}
+      <section className="max-w-7xl mx-auto px-6 py-20 border-t border-border/40 relative group overflow-hidden">
+
+        <div className="space-y-4 mb-16 relative z-10">
+          <p className="text-foreground font-bold tracking-[0.4em] uppercase text-[9px]">Continuous Learning</p>
+          <h2 className="text-3xl md:text-4xl font-medium tracking-tighter text-foreground">Intellectual Pursuits & Library</h2>
+        </div>
+
+        <div className="max-w-4xl space-y-8 relative z-10">
+          <div className="flex flex-col md:flex-row md:items-baseline gap-2 md:gap-12 border-b border-border/40 pb-6 group/item cursor-default">
+            <span className="text-xs font-mono text-muted-foreground w-32 shrink-0 group-hover/item:text-foreground transition-colors">01. Reading</span>
+            <p className="text-lg md:text-xl font-light text-foreground/80 group-hover/item:text-foreground transition-colors">Designing Data-Intensive Applications, Clean Architecture, The Pragmatic Programmer.</p>
+          </div>
+          <div className="flex flex-col md:flex-row md:items-baseline gap-2 md:gap-12 border-b border-border/40 pb-6 group/item cursor-default">
+            <span className="text-xs font-mono text-muted-foreground w-32 shrink-0 group-hover/item:text-foreground transition-colors">02. Exploring</span>
+            <p className="text-lg md:text-xl font-light text-foreground/80 group-hover/item:text-foreground transition-colors">Distributed systems, Multi-agent AI architectures, and Core web vitals.</p>
+          </div>
+          <div className="flex flex-col md:flex-row md:items-baseline gap-2 md:gap-12 border-b border-border/40 pb-6 group/item cursor-default">
+            <span className="text-xs font-mono text-muted-foreground w-32 shrink-0 group-hover/item:text-foreground transition-colors">03. Following</span>
+            <p className="text-lg md:text-xl font-light text-foreground/80 group-hover/item:text-foreground transition-colors">Uber's API Gateway, OpenAI Multi-Agent frameworks, Cloudflare engineering blog.</p>
+          </div>
+        </div>
+      </section>
+
+      {/* FOOTER SECTION */}
+      <footer className="py-20 px-6 border-t border-border/40 bg-background relative overflow-hidden group">
+        
+
+
+        <div className="max-w-7xl mx-auto space-y-24 relative z-10">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-end">
+            <div className="space-y-8">
+              <h2 className="text-6xl md:text-8xl font-medium tracking-tighter leading-none text-foreground">Let's build <br />together.</h2>
               <p className="text-muted-foreground text-xl font-light max-w-sm">
                 Open for interesting collaborations and full-time opportunities.
               </p>
-              <div className="flex flex-wrap gap-4 pt-4">
+              <div className="flex flex-wrap gap-4 pt-8">
                 <a href="mailto:saxenaadarsh35@gmail.com">
-                  <Button className="rounded-full h-14 px-10 text-xs bg-primary text-primary-foreground font-bold uppercase tracking-widest hover:opacity-90">
+                  <Button className="rounded-full h-16 px-12 text-sm bg-foreground text-background font-bold uppercase tracking-widest hover:opacity-90">
                     Get in touch
                   </Button>
                 </a>
               </div>
             </div>
             
-            <div className="flex flex-col md:items-end space-y-8">
-              <div className="flex items-center gap-6">
+            <div className="flex flex-col md:items-end space-y-12">
+              <div className="flex items-center gap-8">
                 {[
                   { icon: Github, href: "https://github.com", label: "Github" },
                   { icon: Linkedin, href: "https://linkedin.com", label: "LinkedIn" },
@@ -456,12 +485,12 @@ export default function Portfolio() {
                     href={social.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="group flex flex-col items-center gap-2"
+                    className="group flex flex-col items-center gap-3"
                   >
-                    <div className="w-12 h-12 rounded-full bg-secondary flex items-center justify-center group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-500">
-                      <social.icon className="w-5 h-5" />
+                    <div className="w-14 h-14 rounded-full bg-secondary flex items-center justify-center group-hover:bg-foreground group-hover:text-background transition-all duration-500">
+                      <social.icon className="w-6 h-6" />
                     </div>
-                    <span className="text-[8px] font-bold uppercase tracking-widest text-muted-foreground opacity-0 group-hover:opacity-100 transition-opacity">
+                    <span className="text-[9px] font-bold uppercase tracking-widest text-muted-foreground opacity-0 group-hover:opacity-100 transition-opacity">
                       {social.label}
                     </span>
                   </a>

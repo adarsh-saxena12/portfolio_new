@@ -1,18 +1,16 @@
 "use client"
 
-import { Github, ExternalLink, ChevronRight } from "lucide-react"
+import { ChevronRight } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
-import { Card } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
 
 interface Project {
   id: number
   title: string
-  description: string
+  description?: string
   image: string
-  bgImage: string
-  tech: string[]
+  bgImage?: string
+  tech?: string[]
   link?: string
   github?: string
 }
@@ -23,47 +21,31 @@ interface ProjectBentoGridProps {
 
 export default function ProjectBentoGrid({ projects }: ProjectBentoGridProps) {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-4 md:gap-x-6 gap-y-16 md:gap-y-24">
-      {projects.map((project, index) => {
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+      {projects.map((project) => {
         return (
           <Link 
             key={project.id} 
-            href={`/projects/${project.id}`}
-            className="group flex flex-col space-y-3 cursor-pointer"
+            href={project.link || `#`}
+            className="group flex flex-col bg-card/60 dark:bg-card/40 border border-border/50 rounded-2xl p-4 hover:border-border/90 hover:shadow-sm transition-all duration-300 relative overflow-hidden"
           >
-            {/* Image Block */}
-            <div className="relative aspect-[4/5] w-full rounded-md overflow-hidden bg-zinc-100 dark:bg-zinc-900 border border-border/40">
-              {/* Background Image (Anime) */}
+            {/* Image Preview Frame */}
+            <div className="relative aspect-[16/10] w-full rounded-xl overflow-hidden bg-muted/60 border border-border/30 mb-3">
               <Image
-                src={project.bgImage}
-                alt={`${project.title} background`}
+                src={project.image}
+                alt={project.title}
                 fill
-                className="object-cover transition-all duration-[1.5s] grayscale group-hover:grayscale-0 opacity-30 group-hover:opacity-50"
+                className="object-cover object-top group-hover:scale-103 transition-transform duration-500"
               />
-              
-              {/* Foreground Content (Screenshot) - Centered */}
-              <div className="absolute inset-0 flex items-center justify-center p-8 md:p-12">
-                <div className="relative w-full h-full rounded-md overflow-hidden shadow-2xl transform transition-all duration-700 group-hover:-translate-y-2 grayscale group-hover:grayscale-0">
-                   <Image
-                    src={project.image}
-                    alt={project.title}
-                    fill
-                    className="object-cover"
-                  />
-                </div>
-              </div>
             </div>
 
-            {/* Content Below */}
-            <div className="space-y-4 px-0">
-              <div className="space-y-2">
-                <h3 className="text-xl font-bold text-foreground tracking-tight flex items-center justify-between">
-                  {project.title}
-                  <ChevronRight className="w-4 h-4 text-muted-foreground group-hover:text-primary group-hover:translate-x-1 transition-all" />
-                </h3>
-                <p className="text-muted-foreground text-sm leading-relaxed font-light line-clamp-3">
-                  {project.description}
-                </p>
+            {/* Just Project Name */}
+            <div className="flex items-center justify-between px-1 pt-1 pb-1">
+              <h3 className="text-lg font-bold tracking-tight text-foreground group-hover:text-primary transition-colors">
+                {project.title}
+              </h3>
+              <div className="w-7 h-7 rounded-full bg-secondary/80 flex items-center justify-center group-hover:bg-foreground group-hover:text-background transition-colors duration-300 shrink-0">
+                <ChevronRight className="w-4 h-4 text-foreground group-hover:text-background group-hover:translate-x-0.5 transition-all" />
               </div>
             </div>
           </Link>
