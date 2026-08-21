@@ -97,60 +97,35 @@ export default function Portfolio() {
 
   return (
     <div className="min-h-screen bg-background text-foreground transition-colors duration-300">
-      {/* HERO SECTION - Minimal editorial introduction */}
-      <section id="home" className="mx-auto w-full max-w-7xl px-5 pb-16 pt-8 md:px-8 md:pb-24 md:pt-12">
-        <div className="grid gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(360px,0.8fr)] lg:items-end lg:gap-20">
-          <div className="flex flex-col gap-8 md:gap-10">
-            <div className="flex items-center gap-3 text-[10px] font-mono uppercase tracking-[0.28em] text-muted-foreground">
-              <span className="size-2 rounded-full bg-primary" aria-hidden="true" />
-              <span>Independent fullstack engineer</span>
-              <span className="text-border">/</span>
-              <span>India · 2026</span>
-            </div>
-            <div className="flex flex-col gap-6">
-              <h1 className="max-w-4xl text-balance text-5xl font-medium leading-[0.98] tracking-[-0.06em] text-foreground sm:text-7xl lg:text-[7rem]">
-                I build the quiet layer behind great digital products.
-              </h1>
-              <p className="max-w-xl text-pretty text-base leading-7 text-muted-foreground md:text-lg">
-                Adarsh Saxena designs and engineers high-performance web applications where thoughtful systems meet clear visual language.
-              </p>
-            </div>
-            <div className="flex flex-wrap items-center gap-4">
-              <a href="#work">
-                <Button className="h-11 rounded-full px-6 text-sm">View selected work <ArrowUpRight data-icon="inline-end" /></Button>
-              </a>
-              <a href="/hire-me" className="text-sm font-medium text-foreground underline decoration-border underline-offset-8 transition-colors hover:decoration-foreground">
-                Start a conversation
-              </a>
-            </div>
+      {/* HERO SECTION - Quiet blue introduction */}
+      <section id="home" className="relative mx-auto mt-3 min-h-[680px] w-[calc(100%-1.5rem)] max-w-[1380px] overflow-hidden rounded-[2rem] border border-hero-line bg-hero-sky text-hero-ink md:min-h-[720px] md:w-[calc(100%-3rem)]">
+        <div className="absolute inset-0 bg-hero-wash" aria-hidden="true" />
+        <div className="pointer-events-none absolute inset-0 opacity-50" aria-hidden="true">
+          <span className="absolute left-[16%] top-[34%] size-1 rounded-full bg-hero-speck" />
+          <span className="absolute right-[18%] top-[29%] size-1 rounded-full bg-hero-speck" />
+          <span className="absolute left-[28%] top-[48%] size-1 rounded-full bg-hero-speck" />
+          <span className="absolute right-[31%] top-[58%] size-1 rounded-full bg-hero-speck" />
+        </div>
+        <div className="relative z-10 mx-auto flex max-w-2xl flex-col items-center gap-5 px-6 pt-20 text-center md:pt-24">
+          <p className="font-mono text-[9px] uppercase tracking-[0.28em] text-hero-muted">Adarsh Saxena · software engineer</p>
+          <h1 className="max-w-xl text-balance text-5xl font-medium leading-[0.94] tracking-[-0.065em] sm:text-7xl md:text-[5.5rem]">Building products that feel simple.</h1>
+          <p className="max-w-sm text-sm leading-6 text-hero-muted">Fullstack engineering, thoughtful interfaces, and a little curiosity.</p>
+          <div className="flex items-center gap-2 pt-2">
+            <a href="#work"><Button className="h-10 rounded-full bg-hero-ink px-5 text-xs text-hero-sky hover:bg-hero-ink/90">See my work</Button></a>
+            <a href="/hire-me"><Button variant="outline" className="h-10 rounded-full border-hero-line bg-hero-sky/20 px-5 text-xs text-hero-ink hover:bg-hero-sky/40">Let&apos;s talk</Button></a>
           </div>
-
-          <div className="flex flex-col gap-5">
-            <div className="relative aspect-[4/3] overflow-hidden border border-border bg-muted">
-              <Image src="/images/hero_man_sunset_far.png" alt="A warm dusk silhouette representing thoughtful digital craft" fill className="object-cover grayscale-[20%] transition-transform duration-700 hover:scale-[1.03]" priority />
-              <div className="absolute inset-0 bg-gradient-to-t from-foreground/50 via-transparent to-transparent" />
-              <div className="absolute bottom-5 left-5 right-5 flex items-end justify-between gap-4 text-background">
-                <div className="flex flex-col gap-1">
-                  <span className="font-mono text-[9px] uppercase tracking-[0.24em] text-background/70">Currently shaping</span>
-                  <span className="text-sm font-medium">Algorizz · product engineering</span>
-                </div>
-                <span className="font-mono text-[10px] uppercase tracking-widest text-background/70">01—26</span>
-              </div>
+        </div>
+        <div className="absolute bottom-[-1px] left-1/2 z-10 h-64 w-[min(90%,620px)] -translate-x-1/2" aria-hidden="true">
+          <div className="absolute bottom-0 left-1/2 h-44 w-72 -translate-x-1/2 rotate-[-3deg] rounded-t-2xl border border-hero-line bg-hero-paper shadow-xl" />
+          <div className="absolute bottom-[-10px] left-1/2 h-48 w-80 -translate-x-1/2 rotate-[5deg] rounded-t-2xl border border-hero-line bg-hero-paper shadow-xl" />
+          <div className="absolute bottom-[-4px] left-1/2 h-52 w-72 -translate-x-1/2 rounded-t-2xl border border-hero-line bg-hero-paper px-7 pt-8 text-left shadow-2xl">
+            <div className="mb-5 h-2 w-16 rounded-full bg-hero-line" />
+            <div className="flex flex-col gap-3">
+              <span className="h-2 w-full rounded-full bg-hero-line" />
+              <span className="h-2 w-4/5 rounded-full bg-hero-line" />
+              <span className="h-2 w-3/5 rounded-full bg-hero-line" />
             </div>
-            <div className="grid grid-cols-[auto_1fr_auto] items-center gap-4 border-y border-border py-4 font-mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
-              <span>Selected work</span>
-              <span className="h-px bg-border" aria-hidden="true" />
-              <span>Scroll to explore</span>
-            </div>
-            <div className="flex flex-col divide-y divide-border">
-              {projects.slice(0, 3).map((project, index) => (
-                <a key={project.id} href="#work" className="group flex items-center justify-between gap-4 py-3 text-sm transition-colors hover:text-muted-foreground">
-                  <span className="font-mono text-[10px] text-muted-foreground">0{index + 1}</span>
-                  <span className="flex-1 font-medium">{project.title}</span>
-                  <ArrowUpRight className="size-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-                </a>
-              ))}
-            </div>
+            <div className="mt-8 h-14 rounded-xl bg-hero-wash" />
           </div>
         </div>
       </section>

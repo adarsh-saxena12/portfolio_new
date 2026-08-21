@@ -23,6 +23,12 @@
   --border: 216 212 204;
   --input: 216 212 204;
   --ring: 210 78 35;
+  --hero-sky: 139 180 215;
+  --hero-wash: 205 226 239;
+  --hero-ink: 255 255 255;
+  --hero-paper: 250 251 249;
+  --hero-line: 225 239 247;
+  --hero-speck: 239 249 253;
   --chart-1: oklch(0.646 0.222 41.116);
   --chart-2: oklch(0.6 0.118 184.704);
   --chart-3: oklch(0.398 0.07 227.392);
@@ -124,6 +130,12 @@
   --color-border: rgb(var(--border));
   --color-input: rgb(var(--input));
   --color-ring: rgb(var(--ring));
+  --color-hero-sky: rgb(var(--hero-sky));
+  --color-hero-wash: rgb(var(--hero-wash));
+  --color-hero-ink: rgb(var(--hero-ink));
+  --color-hero-paper: rgb(var(--hero-paper));
+  --color-hero-line: rgb(var(--hero-line));
+  --color-hero-speck: rgb(var(--hero-speck));
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
