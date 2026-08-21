@@ -97,35 +97,20 @@ export default function Portfolio() {
 
   return (
     <div className="min-h-screen bg-background text-foreground transition-colors duration-300">
-      {/* HERO SECTION - Quiet blue introduction */}
-      <section id="home" className="relative mx-auto mt-3 min-h-[680px] w-[calc(100%-1.5rem)] max-w-[1380px] overflow-hidden rounded-[2rem] border border-hero-line bg-hero-sky text-hero-ink md:min-h-[720px] md:w-[calc(100%-3rem)]">
-        <div className="absolute inset-0 bg-hero-wash" aria-hidden="true" />
-        <div className="pointer-events-none absolute inset-0 opacity-50" aria-hidden="true">
-          <span className="absolute left-[16%] top-[34%] size-1 rounded-full bg-hero-speck" />
-          <span className="absolute right-[18%] top-[29%] size-1 rounded-full bg-hero-speck" />
-          <span className="absolute left-[28%] top-[48%] size-1 rounded-full bg-hero-speck" />
-          <span className="absolute right-[31%] top-[58%] size-1 rounded-full bg-hero-speck" />
+      {/* HERO SECTION - Personal blue introduction */}
+      <section id="home" className="relative mx-auto mt-3 min-h-[620px] w-[calc(100%-1.5rem)] max-w-[1380px] overflow-hidden rounded-[2rem] border border-hero-line bg-gradient-to-b from-hero-sky to-hero-wash text-hero-ink md:min-h-[680px] md:w-[calc(100%-3rem)]">
+        <div className="pointer-events-none absolute inset-0 opacity-60" aria-hidden="true">
+          <span className="absolute left-[18%] top-[38%] size-1 rounded-full bg-hero-speck" />
+          <span className="absolute right-[20%] top-[32%] size-1 rounded-full bg-hero-speck" />
+          <span className="absolute left-[34%] top-[57%] size-1 rounded-full bg-hero-speck" />
         </div>
-        <div className="relative z-10 mx-auto flex max-w-2xl flex-col items-center gap-5 px-6 pt-20 text-center md:pt-24">
-          <p className="font-mono text-[9px] uppercase tracking-[0.28em] text-hero-muted">Adarsh Saxena · software engineer</p>
-          <h1 className="max-w-xl text-balance text-5xl font-medium leading-[0.94] tracking-[-0.065em] sm:text-7xl md:text-[5.5rem]">Building products that feel simple.</h1>
-          <p className="max-w-sm text-sm leading-6 text-hero-muted">Fullstack engineering, thoughtful interfaces, and a little curiosity.</p>
-          <div className="flex items-center gap-2 pt-2">
-            <a href="#work"><Button className="h-10 rounded-full bg-hero-ink px-5 text-xs text-hero-sky hover:bg-hero-ink/90">See my work</Button></a>
-            <a href="/hire-me"><Button variant="outline" className="h-10 rounded-full border-hero-line bg-hero-sky/20 px-5 text-xs text-hero-ink hover:bg-hero-sky/40">Let&apos;s talk</Button></a>
-          </div>
-        </div>
-        <div className="absolute bottom-[-1px] left-1/2 z-10 h-64 w-[min(90%,620px)] -translate-x-1/2" aria-hidden="true">
-          <div className="absolute bottom-0 left-1/2 h-44 w-72 -translate-x-1/2 rotate-[-3deg] rounded-t-2xl border border-hero-line bg-hero-paper shadow-xl" />
-          <div className="absolute bottom-[-10px] left-1/2 h-48 w-80 -translate-x-1/2 rotate-[5deg] rounded-t-2xl border border-hero-line bg-hero-paper shadow-xl" />
-          <div className="absolute bottom-[-4px] left-1/2 h-52 w-72 -translate-x-1/2 rounded-t-2xl border border-hero-line bg-hero-paper px-7 pt-8 text-left shadow-2xl">
-            <div className="mb-5 h-2 w-16 rounded-full bg-hero-line" />
-            <div className="flex flex-col gap-3">
-              <span className="h-2 w-full rounded-full bg-hero-line" />
-              <span className="h-2 w-4/5 rounded-full bg-hero-line" />
-              <span className="h-2 w-3/5 rounded-full bg-hero-line" />
-            </div>
-            <div className="mt-8 h-14 rounded-xl bg-hero-wash" />
+        <div className="relative z-10 flex max-w-xl flex-col items-start gap-6 px-7 pt-10 text-left md:px-14 md:pt-14">
+          <p className="font-mono text-[10px] uppercase tracking-[0.24em] text-hero-muted">Adarsh Saxena / developer</p>
+          <h1 className="max-w-lg text-balance text-5xl font-medium leading-[0.96] tracking-[-0.065em] sm:text-7xl md:text-[6rem]">Hi, I&apos;m Adarsh.</h1>
+          <p className="max-w-xs text-base leading-7 text-hero-muted">I make useful things for the web.</p>
+          <div className="flex items-center gap-3 pt-1">
+            <a href="#work"><Button className="h-10 rounded-full bg-hero-ink px-5 text-xs text-hero-sky hover:bg-hero-ink/90">View work</Button></a>
+            <a href="/hire-me" className="text-xs font-medium text-hero-ink underline decoration-hero-line underline-offset-8 hover:decoration-hero-ink">Contact me</a>
           </div>
         </div>
       </section>

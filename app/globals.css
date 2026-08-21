@@ -29,6 +29,7 @@
   --hero-paper: 250 251 249;
   --hero-line: 225 239 247;
   --hero-speck: 239 249 253;
+  --hero-muted: 245 250 252;
   --chart-1: oklch(0.646 0.222 41.116);
   --chart-2: oklch(0.6 0.118 184.704);
   --chart-3: oklch(0.398 0.07 227.392);
@@ -136,6 +137,7 @@
   --color-hero-paper: rgb(var(--hero-paper));
   --color-hero-line: rgb(var(--hero-line));
   --color-hero-speck: rgb(var(--hero-speck));
+  --color-hero-muted: rgb(var(--hero-muted));
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
