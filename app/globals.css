@@ -4,25 +4,25 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  --background: 255 255 255;
-  --foreground: 15 23 42;
-  --card: 242 243 245;
-  --card-foreground: 15 23 42;
-  --popover: 255 255 255;
-  --popover-foreground: 15 23 42;
-  --primary: 15 23 42;
-  --primary-foreground: 255 255 255;
-  --secondary: 241 245 249;
-  --secondary-foreground: 15 23 42;
-  --muted: 241 245 249;
-  --muted-foreground: 100 116 139;
-  --accent: 241 245 249;
-  --accent-foreground: 15 23 42;
-  --destructive: 239 68 68;
-  --destructive-foreground: 255 255 255;
-  --border: 226 232 240;
-  --input: 226 232 240;
-  --ring: 15 23 42;
+  --background: 248 247 244;
+  --foreground: 24 24 22;
+  --card: 242 240 235;
+  --card-foreground: 24 24 22;
+  --popover: 248 247 244;
+  --popover-foreground: 24 24 22;
+  --primary: 24 24 22;
+  --primary-foreground: 248 247 244;
+  --secondary: 232 229 222;
+  --secondary-foreground: 24 24 22;
+  --muted: 232 229 222;
+  --muted-foreground: 105 102 95;
+  --accent: 210 78 35;
+  --accent-foreground: 248 247 244;
+  --destructive: 185 58 45;
+  --destructive-foreground: 248 247 244;
+  --border: 216 212 204;
+  --input: 216 212 204;
+  --ring: 210 78 35;
   --chart-1: oklch(0.646 0.222 41.116);
   --chart-2: oklch(0.6 0.118 184.704);
   --chart-3: oklch(0.398 0.07 227.392);
@@ -88,19 +88,19 @@
 }
 
 [data-theme="light"] {
-  --background: 255 255 255;
-  --foreground: 15 23 42;
-  --card: 242 243 245;
-  --card-foreground: 15 23 42;
-  --primary: 15 23 42;
-  --primary-foreground: 255 255 255;
-  --secondary: 241 245 249;
-  --secondary-foreground: 15 23 42;
-  --muted: 241 245 249;
-  --muted-foreground: 100 116 139;
-  --accent: 241 245 249;
-  --accent-foreground: 15 23 42;
-  --border: 226 232 240;
+  --background: 248 247 244;
+  --foreground: 24 24 22;
+  --card: 242 240 235;
+  --card-foreground: 24 24 22;
+  --primary: 24 24 22;
+  --primary-foreground: 248 247 244;
+  --secondary: 232 229 222;
+  --secondary-foreground: 24 24 22;
+  --muted: 232 229 222;
+  --muted-foreground: 105 102 95;
+  --accent: 210 78 35;
+  --accent-foreground: 248 247 244;
+  --border: 216 212 204;
 }
 
 @theme inline {

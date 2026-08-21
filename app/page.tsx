@@ -97,71 +97,61 @@ export default function Portfolio() {
 
   return (
     <div className="min-h-screen bg-background text-foreground transition-colors duration-300">
-      {/* HERO SECTION - Dual Rounded Cards Inspired by Modern SaaS Design */}
-      <section id="home" className="w-full pt-4 md:pt-6 pb-12 md:pb-20 px-4 md:px-6 max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-5 items-stretch min-h-0 lg:min-h-[580px]">
-          
-          {/* Left Hero Card - Soft Grey Card Matching Screenshot */}
-          <div className="lg:col-span-6 bg-[#eef0f3] dark:bg-zinc-900/80 border border-border/50 rounded-2xl md:rounded-[2.5rem] p-6 sm:p-8 md:p-14 flex flex-col justify-between relative overflow-hidden group shadow-sm transition-all duration-500 hover:border-border/80 min-h-0 sm:min-h-[500px]">
-            
-            <div className="relative z-10 space-y-4 sm:space-y-6 md:space-y-8 my-auto">
-              {/* Eyebrow Tag */}
-              <div className="inline-flex items-center gap-1.5 px-3 py-1 sm:px-4 sm:py-1.5 rounded-full bg-white/90 dark:bg-zinc-800/90 text-foreground/70 font-mono text-[10px] sm:text-[11px] font-medium uppercase tracking-widest border border-border/50 shadow-2xs">
-                <span>FULLSTACK SOFTWARE ENGINEER</span>
-                <span className="text-foreground/40">&rsaquo;</span>
-              </div>
-
-              {/* Bold Geometric Headline matching exact Figtree specs */}
-              <h1 className="text-2xl sm:text-[40px] lg:text-[56px] font-medium text-[#202020] dark:text-[#f0f0f0] leading-snug lg:leading-[60px] tracking-tight lg:tracking-[-1.4px] max-w-[520px]">
-                The Engineering Layer for Modern Web Apps
+      {/* HERO SECTION - Minimal editorial introduction */}
+      <section id="home" className="mx-auto w-full max-w-7xl px-5 pb-16 pt-8 md:px-8 md:pb-24 md:pt-12">
+        <div className="grid gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(360px,0.8fr)] lg:items-end lg:gap-20">
+          <div className="flex flex-col gap-8 md:gap-10">
+            <div className="flex items-center gap-3 text-[10px] font-mono uppercase tracking-[0.28em] text-muted-foreground">
+              <span className="size-2 rounded-full bg-primary" aria-hidden="true" />
+              <span>Independent fullstack engineer</span>
+              <span className="text-border">/</span>
+              <span>India · 2026</span>
+            </div>
+            <div className="flex flex-col gap-6">
+              <h1 className="max-w-4xl text-balance text-5xl font-medium leading-[0.98] tracking-[-0.06em] text-foreground sm:text-7xl lg:text-[7rem]">
+                I build the quiet layer behind great digital products.
               </h1>
-
-              {/* Subtitle Paragraph matching exact Figtree specs */}
-              <p className="text-sm sm:text-[18px] font-normal text-[#404040] dark:text-[#a0a0a0] leading-relaxed sm:leading-[28px] tracking-normal max-w-[520px]">
-                Adarsh Saxena builds high-performance, scalable web applications combining robust fullstack architecture with museum-grade aesthetic clarity.
+              <p className="max-w-xl text-pretty text-base leading-7 text-muted-foreground md:text-lg">
+                Adarsh Saxena designs and engineers high-performance web applications where thoughtful systems meet clear visual language.
               </p>
-
-              {/* Pill Action Buttons - Minimal & Compact on Mobile */}
-              <div className="flex flex-wrap items-center gap-3 pt-2 md:pt-4">
-                <a href="#about">
-                  <Button className="rounded-full h-10 px-5 sm:h-12 sm:px-8 text-xs sm:text-sm font-semibold bg-foreground text-background hover:bg-foreground/90 transition-all duration-300 shadow-md">
-                    Explore Work
-                  </Button>
-                </a>
-                <a href="/hire-me">
-                  <Button variant="outline" className="rounded-full h-10 px-5 sm:h-12 sm:px-8 text-xs sm:text-sm font-medium bg-white dark:bg-zinc-800 border-border/80 hover:bg-slate-50 dark:hover:bg-zinc-700 transition-all duration-300 shadow-2xs">
-                    Hire Me
-                  </Button>
-                </a>
-              </div>
+            </div>
+            <div className="flex flex-wrap items-center gap-4">
+              <a href="#work">
+                <Button className="h-11 rounded-full px-6 text-sm">View selected work <ArrowUpRight data-icon="inline-end" /></Button>
+              </a>
+              <a href="/hire-me" className="text-sm font-medium text-foreground underline decoration-border underline-offset-8 transition-colors hover:decoration-foreground">
+                Start a conversation
+              </a>
             </div>
           </div>
 
-          {/* Right Hero Card - Sunset Silhouette Aesthetic Image (No Hover Zoom) */}
-          <div className="lg:col-span-6 relative rounded-2xl md:rounded-[2.5rem] overflow-hidden min-h-[260px] sm:min-h-[400px] lg:min-h-[580px] shadow-md border border-border/30 group">
-            <Image 
-              src="/images/hero_man_sunset_far.png" 
-              alt="Developer Dusk Silhouette Artwork" 
-              fill 
-              className="object-cover"
-              priority
-            />
-            {/* Soft Light Overlay - Bright & Vibrant */}
-            <div className="absolute inset-0 bg-gradient-to-t from-black/35 via-transparent to-transparent pointer-events-none" />
-            
-            {/* Live Status Badge at bottom */}
-            <div className="absolute bottom-4 left-4 right-4 sm:bottom-8 sm:left-8 sm:right-8 z-10 flex flex-wrap gap-3 justify-between items-end">
-              <div className="space-y-0.5">
-                <p className="text-white/90 font-mono text-[9px] sm:text-[10px] uppercase tracking-widest">Aesthetic & Engineering</p>
-                <p className="text-white text-base sm:text-xl font-semibold tracking-tight drop-shadow-sm">Algorizz & Open Source</p>
-              </div>
-              <div className="inline-flex items-center gap-1.5 px-3 py-1 sm:px-3.5 sm:py-1.5 rounded-full bg-black/30 backdrop-blur-md border border-white/30 text-white text-[11px] sm:text-xs font-mono shadow-sm">
-                <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-                <span>Available 2026</span>
+          <div className="flex flex-col gap-5">
+            <div className="relative aspect-[4/3] overflow-hidden border border-border bg-muted">
+              <Image src="/images/hero_man_sunset_far.png" alt="A warm dusk silhouette representing thoughtful digital craft" fill className="object-cover grayscale-[20%] transition-transform duration-700 hover:scale-[1.03]" priority />
+              <div className="absolute inset-0 bg-gradient-to-t from-foreground/50 via-transparent to-transparent" />
+              <div className="absolute bottom-5 left-5 right-5 flex items-end justify-between gap-4 text-background">
+                <div className="flex flex-col gap-1">
+                  <span className="font-mono text-[9px] uppercase tracking-[0.24em] text-background/70">Currently shaping</span>
+                  <span className="text-sm font-medium">Algorizz · product engineering</span>
+                </div>
+                <span className="font-mono text-[10px] uppercase tracking-widest text-background/70">01—26</span>
               </div>
             </div>
+            <div className="grid grid-cols-[auto_1fr_auto] items-center gap-4 border-y border-border py-4 font-mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
+              <span>Selected work</span>
+              <span className="h-px bg-border" aria-hidden="true" />
+              <span>Scroll to explore</span>
+            </div>
+            <div className="flex flex-col divide-y divide-border">
+              {projects.slice(0, 3).map((project, index) => (
+                <a key={project.id} href="#work" className="group flex items-center justify-between gap-4 py-3 text-sm transition-colors hover:text-muted-foreground">
+                  <span className="font-mono text-[10px] text-muted-foreground">0{index + 1}</span>
+                  <span className="flex-1 font-medium">{project.title}</span>
+                  <ArrowUpRight className="size-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                </a>
+              ))}
+            </div>
           </div>
-
         </div>
       </section>
 
